@@ -8,13 +8,15 @@
   <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Status"></a>
 </p>
 
-[OpenClaw](https://openclaw.ai) is the AI assistant.
-[NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) cages it — monitoring every internet request, file access, and API call.
-MediClaw exiles that cage to the cloud, where healthcare teams can safely experiment with what AI can do in medicine.
+MediClaw is a reference implementation for evaluating AI assistants in healthcare environments.
+Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and the
+[OpenShell](https://github.com/NVIDIA/OpenShell) runtime, it deploys an
+[OpenClaw](https://openclaw.ai) agent inside a policy-enforced sandbox that monitors all network
+egress, file system access, and inference API calls.
 
-Out of the box, MediClaw provides access to **30+ medical websites and APIs** — PubMed, Medscape,
-CDC, WHO, FDA, ClinicalTrials.gov, MDCalc, and more. The goal is to see what's possible — both the
-opportunities and the risks — before AI assistants become part of clinical workflows.
+The sandbox ships with pre-approved access to **30+ medical resources** — including PubMed, Medscape,
+CDC, WHO, FDA, ClinicalTrials.gov, and MDCalc — enabling healthcare teams to evaluate AI capabilities
+and limitations in a controlled environment before considering production deployment.
 
 > [!CAUTION]
 > Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw), which is still in alpha.
