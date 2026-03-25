@@ -74,9 +74,10 @@ check_environment() {
     has_cloud_init=true
   fi
 
-  # Both checks must pass — this prevents on-prem VMs (which may have
-  # one signal but not both) from being mistaken for cloud instances.
-  if [[ "$has_metadata" == "true" && "$has_cloud_init" == "true" ]]; then
+  # Either check passing indicates a cloud VM. The metadata endpoint
+  # may be unreachable on some providers, and cloud-init alone is a
+  # strong signal (not installed on personal machines by default).
+  if [[ "$has_metadata" == "true" || "$has_cloud_init" == "true" ]]; then
     return
   fi
 
