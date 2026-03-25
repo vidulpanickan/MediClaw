@@ -11,7 +11,7 @@
 MediClaw is a reference implementation for evaluating AI assistants in healthcare environments.
 Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and the
 [OpenShell](https://github.com/NVIDIA/OpenShell) runtime, it deploys an
-[OpenClaw](https://openclaw.ai) agent inside a policy-enforced sandbox that monitors all network
+[OpenClaw](https://openclaw.ai) agent inside a policy enforced sandbox that monitors all network
 egress, file system access, and inference API calls.
 
 The sandbox ships with pre-approved access to **30+ medical resources**, including PubMed, Medscape,
@@ -20,7 +20,7 @@ and limitations in a controlled environment before considering production deploy
 
 > [!CAUTION]
 > Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw), which is still in alpha.
-> MediClaw is strictly for demonstration and learning. Never for on-premises deployment
+> MediClaw is strictly for demonstration and learning. Never for on premise deployment
 > at any healthcare system. Do not use for patient care or clinical decisions.
 > AI outputs may be inaccurate, incomplete, or harmful. Always verify with authoritative sources.
 
@@ -53,10 +53,10 @@ it gets wrong, and where the boundaries are.
 
 MediClaw provides that sandbox:
 
-- **Pre-loaded medical access**: PubMed, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more resources available out of the box
-- **Deny-by-default networking**: the agent can only reach explicitly allowed domains, so you can observe exactly what it tries to access
+- **Pre loaded medical access**: PubMed, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more resources available out of the box
+- **Deny by default networking**: the agent can only reach explicitly allowed domains, so you can observe exactly what it tries to access
 - **Credential isolation**: API keys never enter the sandbox; auth is injected at the proxy layer
-- **Cloud-only deployment**: runs on cloud VMs, not personal machines, keeping experiments separate from clinical systems
+- **Cloud only deployment**: runs on cloud VMs, not personal machines, keeping experiments separate from clinical systems
 - **Operator oversight**: blocked requests surface in a real-time TUI so you can see what the agent wants to do
 
 Built on [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) with four isolation layers:
