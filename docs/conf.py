@@ -98,7 +98,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "MediClaw GitHub",
-            "url": "https://github.com/vidulpanickan/NemoClaw",
+            "url": "https://github.com/vidulpanickan/MediClaw",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
         },

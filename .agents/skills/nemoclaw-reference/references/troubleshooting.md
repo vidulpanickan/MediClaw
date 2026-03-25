@@ -2,7 +2,7 @@
 
 This page covers common issues you may encounter when installing, onboarding, or running MediClaw, along with their resolution steps.
 
-> **Get Help:** If your issue is not listed here, join the [MediClaw Discord channel](https://discord.gg/XFpfPv9Uvx) to ask questions and get help from the community. You can also [file an issue on GitHub](https://github.com/vidulpanickan/NemoClaw/issues/new).
+> **Get Help:** If your issue is not listed here, join the [MediClaw Discord channel](https://discord.gg/XFpfPv9Uvx) to ask questions and get help from the community. You can also [file an issue on GitHub](https://github.com/vidulpanickan/MediClaw/issues/new).
 
 ## Installation
 

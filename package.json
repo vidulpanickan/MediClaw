@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vidulpanickan/NemoClaw.git"
+    "url": "https://github.com/vidulpanickan/MediClaw.git"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",

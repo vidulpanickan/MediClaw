@@ -27,7 +27,7 @@ MediClaw is available in early preview starting March 16, 2026. Use the followin
 
 | Resource | Description |
 |---|---|
-| [Releases](https://github.com/vidulpanickan/NemoClaw/releases) | Versioned release notes and downloadable assets. |
-| [Release comparison](https://github.com/vidulpanickan/NemoClaw/compare) | Diff between any two tags or branches. |
-| [Merged pull requests](https://github.com/vidulpanickan/NemoClaw/pulls?q=is%3Apr+is%3Amerged) | Individual changes with review discussion. |
-| [Commit history](https://github.com/vidulpanickan/NemoClaw/commits/main) | Full commit log on `main`. |
+| [Releases](https://github.com/vidulpanickan/MediClaw/releases) | Versioned release notes and downloadable assets. |
+| [Release comparison](https://github.com/vidulpanickan/MediClaw/compare) | Diff between any two tags or branches. |
+| [Merged pull requests](https://github.com/vidulpanickan/MediClaw/pulls?q=is%3Apr+is%3Amerged) | Individual changes with review discussion. |
+| [Commit history](https://github.com/vidulpanickan/MediClaw/commits/main) | Full commit log on `main`. |

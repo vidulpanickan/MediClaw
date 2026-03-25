@@ -85,7 +85,7 @@ Install the CLI and launch a sandboxed OpenClaw instance in a few commands.
 ```
 
 Run `nemoclaw --help` in your terminal to view the full CLI reference.
-You can also clone the [MediClaw repository](https://github.com/vidulpanickan/NemoClaw) to explore the plugin source and blueprint.
+You can also clone the [MediClaw repository](https://github.com/vidulpanickan/MediClaw) to explore the plugin source and blueprint.
 
 Proceed to the [Quickstart](get-started/quickstart.md) for step-by-step instructions.
 

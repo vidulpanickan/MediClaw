@@ -5,7 +5,7 @@
 # MediClaw curl-pipe-bash installer.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/main/scripts/install.sh | bash
 
 set -euo pipefail
 
@@ -416,7 +416,7 @@ info "Installing nemoclaw CLI..."
 NEMOCLAW_SRC="${HOME}/.nemoclaw/source"
 rm -rf "$NEMOCLAW_SRC"
 mkdir -p "$(dirname "$NEMOCLAW_SRC")"
-git clone --depth 1 https://github.com/vidulpanickan/NemoClaw.git "$NEMOCLAW_SRC"
+git clone --depth 1 https://github.com/vidulpanickan/MediClaw.git "$NEMOCLAW_SRC"
 pre_extract_openclaw "$NEMOCLAW_SRC" || warn "Pre-extraction failed — npm install may fail if openclaw tarball is broken"
 # Use sudo for npm link when the global prefix requires it (e.g., nodesource),
 # but skip sudo if already root (e.g., Docker containers).

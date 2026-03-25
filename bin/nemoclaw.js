@@ -39,7 +39,7 @@ const GLOBAL_COMMANDS = new Set([
   "help", "--help", "-h", "--version", "-v",
 ]);
 
-const REMOTE_UNINSTALL_URL = "https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh";
+const REMOTE_UNINSTALL_URL = "https://raw.githubusercontent.com/vidulpanickan/MediClaw/refs/heads/main/uninstall.sh";
 
 function resolveUninstallScript() {
   const candidates = [
@@ -439,7 +439,7 @@ function help() {
 
   ${D}Powered by NVIDIA OpenShell · Nemotron · Agent Toolkit
   Credentials saved in ~/.nemoclaw/credentials.json (mode 600)${R}
-  ${D}https://github.com/vidulpanickan/NemoClaw${R}
+  ${D}https://github.com/vidulpanickan/MediClaw${R}
 `);
 }
 

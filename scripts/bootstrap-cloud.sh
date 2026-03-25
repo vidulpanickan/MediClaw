@@ -6,7 +6,7 @@
 # Works on any fresh Linux VM (DigitalOcean, AWS, GCP, Azure, bare metal).
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/bootstrap-cloud.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/main/scripts/bootstrap-cloud.sh | bash
 
 set -euo pipefail
 
@@ -188,7 +188,7 @@ verify_docker() {
 run_installer() {
   info "Launching MediClaw installer..."
   echo ""
-  curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/install.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/main/install.sh | bash
 }
 
 # ---------------------------------------------------------------------------

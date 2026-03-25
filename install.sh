@@ -112,8 +112,8 @@ print_done() {
   printf "  %s$%s nemoclaw %s connect\n" "$C_GREEN" "$C_RESET" "$sandbox_name"
   printf "  %ssandbox@%s$%s openclaw tui\n" "$C_GREEN" "$sandbox_name" "$C_RESET"
   printf "\n"
-  printf "  ${C_BOLD}GitHub${C_RESET}  ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
-  printf "  ${C_BOLD}Docs${C_RESET}    ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
+  printf "  ${C_BOLD}GitHub${C_RESET}  ${C_DIM}https://github.com/vidulpanickan/MediClaw${C_RESET}\n"
+  printf "  ${C_BOLD}Docs${C_RESET}    ${C_DIM}https://github.com/vidulpanickan/MediClaw${C_RESET}\n"
   printf "\n"
 }
 
@@ -459,7 +459,7 @@ install_nemoclaw() {
     local nemoclaw_src="${HOME}/.nemoclaw/source"
     rm -rf "$nemoclaw_src"
     mkdir -p "$(dirname "$nemoclaw_src")"
-    spin "Cloning MediClaw source" git clone --depth 1 https://github.com/vidulpanickan/NemoClaw.git "$nemoclaw_src"
+    spin "Cloning MediClaw source" git clone --depth 1 https://github.com/vidulpanickan/MediClaw.git "$nemoclaw_src"
     spin "Preparing OpenClaw package" bash -c "$(declare -f info warn pre_extract_openclaw); pre_extract_openclaw \"\$1\"" _ "$nemoclaw_src" \
       || warn "Pre-extraction failed — npm install may fail if openclaw tarball is broken"
     spin "Installing MediClaw dependencies" bash -c "cd \"$nemoclaw_src\" && npm install --ignore-scripts"
@@ -503,7 +503,7 @@ verify_nemoclaw() {
     return 0
   else
     warn "Could not locate the nemoclaw executable."
-    warn "Try running:  npm install -g git+https://github.com/vidulpanickan/NemoClaw.git"
+    warn "Try running:  npm install -g git+https://github.com/vidulpanickan/MediClaw.git"
   fi
 
   error "Installation failed: nemoclaw binary not found."

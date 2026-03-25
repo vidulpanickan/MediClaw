@@ -107,7 +107,7 @@ print_bye() {
   printf "\n"
   printf "  ${C_GREEN}${C_BOLD}Claws retracted.${C_RESET}  ${C_DIM}Until next time.${C_RESET}\n"
   printf "\n"
-  printf "  ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
+  printf "  ${C_DIM}https://github.com/vidulpanickan/MediClaw${C_RESET}\n"
   printf "\n"
 }
 

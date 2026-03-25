@@ -3,9 +3,9 @@
 <p align="center">
   <strong>A Sandbox for Exploring AI in Healthcare</strong>
   <br><br>
-  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue" alt="License"></a>
-  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/SECURITY.md"><img src="https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red" alt="Security"></a>
-  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Status"></a>
+  <a href="https://github.com/vidulpanickan/MediClaw/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue" alt="License"></a>
+  <a href="https://github.com/vidulpanickan/MediClaw/blob/main/SECURITY.md"><img src="https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red" alt="Security"></a>
+  <a href="https://github.com/vidulpanickan/MediClaw/blob/main/docs/about/release-notes.md"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Status"></a>
 </p>
 
 MediClaw is a reference implementation for evaluating AI assistants in healthcare environments.
@@ -90,7 +90,7 @@ you access to DeepSeek, Claude, GPT, Gemini, and more.
 SSH into your VM and run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/bootstrap-cloud.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/main/scripts/bootstrap-cloud.sh | bash
 ```
 
 The installer sets up Docker, Node.js, and MediClaw, then launches a 3-prompt wizard:
@@ -332,7 +332,7 @@ nemoclaw onboard
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/refs/heads/main/uninstall.sh | bash
 ```
 
 | Flag | Effect |

@@ -16,7 +16,7 @@
 curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh
 
 # Clone MediClaw:
-git clone https://github.com/vidulpanickan/NemoClaw.git
+git clone https://github.com/vidulpanickan/MediClaw.git
 cd NemoClaw
 
 # Spark-specific setup (For details see [What's Different on Spark](#whats-different-on-spark))
