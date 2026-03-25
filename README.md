@@ -72,7 +72,7 @@ Get a sandbox running in ~10 minutes. You need a cloud VM and an LLM API key.
 
 | Provider | Recommended Size | Notes |
 |----------|-----------------|-------|
-| **[DigitalOcean](https://www.digitalocean.com/?refcode=a2f2902c6011&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)** | 4 GB RAM / 2 vCPUs | Regular Intel ($24/mo) |
+| **DigitalOcean** | 4 GB RAM / 2 vCPUs | Regular Intel ($24/mo) |
 | **AWS** | t3.medium or larger | Ubuntu 22.04+ AMI |
 | **GCP** | e2-medium or larger | Ubuntu 22.04+ |
 | **Azure** | Standard_B2s or larger | Ubuntu 22.04+ |
