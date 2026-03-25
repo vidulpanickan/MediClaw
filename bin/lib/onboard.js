@@ -2177,7 +2177,7 @@ function printDashboard(sandboxName, model, provider, nimContainer = null) {
 
 const SIMPLE_PROVIDERS = [
   { label: "OpenRouter (recommended)", key: "custom", credEnv: "COMPATIBLE_API_KEY",
-    endpoint: "https://openrouter.ai/api/v1", defaultModel: "openrouter/auto" },
+    endpoint: "https://openrouter.ai/api/v1", defaultModel: "deepseek/deepseek-v3.2" },
   { label: "NVIDIA Endpoints", key: "build", credEnv: "NVIDIA_API_KEY",
     endpoint: null, defaultModel: "nvidia/nemotron-3-super-120b-a12b" },
   { label: "OpenAI", key: "openai", credEnv: "OPENAI_API_KEY",
@@ -2207,9 +2207,13 @@ async function simpleOnboard() {
   const selected = SIMPLE_PROVIDERS[providerIdx] || SIMPLE_PROVIDERS[0];
 
   // 2. API key
+  console.log("  Paste your API key below. Input is hidden for security —");
+  console.log("  you won't see characters as you type. Press Enter when done.");
+  console.log("");
   const apiKey = await prompt(`  API key: `, { secret: true });
-  if (!apiKey) {
-    console.error("  API key is required.");
+  if (!apiKey || !apiKey.trim()) {
+    console.error("");
+    console.error("  API key is required. Please re-run and enter a valid key.");
     process.exit(1);
   }
 
