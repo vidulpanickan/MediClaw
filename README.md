@@ -1,13 +1,15 @@
-# NVIDIA NemoClaw: Reference Stack for Running OpenClaw in OpenShell
+# MediClaw: Medical AI Agent Stack
+
+> Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw)
 
 <!-- start-badges -->
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue)](https://github.com/NVIDIA/NemoClaw/blob/main/LICENSE)
-[![Security Policy](https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red)](https://github.com/NVIDIA/NemoClaw/blob/main/SECURITY.md)
-[![Project Status](https://img.shields.io/badge/status-alpha-orange)](https://github.com/NVIDIA/NemoClaw/blob/main/docs/about/release-notes.md)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue)](https://github.com/vidulpanickan/NemoClaw/blob/main/LICENSE)
+[![Security Policy](https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red)](https://github.com/vidulpanickan/NemoClaw/blob/main/SECURITY.md)
+[![Project Status](https://img.shields.io/badge/status-alpha-orange)](https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md)
 <!-- end-badges -->
 
 <!-- start-intro -->
-NVIDIA NemoClaw is an open source reference stack that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants more safely.
+MediClaw is a medical AI agent stack built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants more safely.
 It installs the [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) runtime, part of NVIDIA Agent Toolkit, which provides additional security for running autonomous agents.
 It also includes open source models such as [NVIDIA Nemotron](https://build.nvidia.com).
 <!-- end-intro -->

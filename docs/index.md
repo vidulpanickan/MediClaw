@@ -1,7 +1,7 @@
 ---
 title:
-  page: "NVIDIA NemoClaw Developer Guide"
-  nav: "NemoClaw"
+  page: "MediClaw Developer Guide"
+  nav: "MediClaw"
 description: "NemoClaw is an open source reference stack that simplifies running OpenClaw always-on assistants more safely, with a single command."
 keywords: ["nemoclaw open source reference stack", "openclaw always-on assistants", "nvidia openshell", "nvidia nemotron"]
 topics: ["generative_ai", "ai_agents"]
@@ -18,7 +18,7 @@ status: published
   SPDX-License-Identifier: Apache-2.0
 -->
 
-# NVIDIA NemoClaw
+# MediClaw
 
 ```{include} ../README.md
 :start-after: <!-- start-badges -->
