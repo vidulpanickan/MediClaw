@@ -34,6 +34,7 @@ Traditional AI assistants have unrestricted network access, creating risk in cli
 - **Credential isolation** — API keys never enter the sandbox; authentication is injected at the proxy layer
 - **Binary-restricted endpoints** — only `node` and `python3` can access allowed domains, preventing data exfiltration via `curl` or `wget`
 - **Operator oversight** — blocked requests surface in a real-time TUI for approval or denial
+- **Cloud-only deployment** — the bootstrap script blocks installs on personal machines, ensuring the assistant runs in a controlled server environment
 
 MediClaw is built on NVIDIA's [OpenShell](https://github.com/NVIDIA/OpenShell) runtime (part of NVIDIA Agent Toolkit) which provides four defense-in-depth layers: filesystem (Landlock), network (HTTP proxy + OPA/Rego), process (seccomp BPF), and inference routing.
 
@@ -41,23 +42,34 @@ MediClaw is built on NVIDIA's [OpenShell](https://github.com/NVIDIA/OpenShell) r
 
 ## Quick Start
 
-Setup takes one install command and 3 prompts: LLM provider, API key, and model name.
+MediClaw is designed to run on cloud servers, not personal machines. You need a cloud VM and an API key from an LLM provider.
 
-### Prerequisites
+### Step 1: Create a Cloud VM
 
-| Dependency | Version |
-|------------|---------|
-| Linux or macOS | Ubuntu 22.04+, macOS with Colima or Docker Desktop |
-| Node.js | 20 or later |
-| Container runtime | Docker (Linux), Colima or Docker Desktop (macOS) |
+Create a Linux VM on any cloud provider:
 
-### Install
+| Provider | Recommended size | Notes |
+|----------|-----------------|-------|
+| DigitalOcean | 4 GB RAM / 2 vCPUs | Regular Intel ($24/mo) |
+| AWS | t3.medium or larger | Ubuntu 22.04+ AMI |
+| GCP | e2-medium or larger | Ubuntu 22.04+ |
+| Azure | Standard_B2s or larger | Ubuntu 22.04+ |
+
+**Minimum requirements:** 4 GB RAM, 2 vCPUs, 20 GB disk. Recommended: 8 GB RAM.
+
+### Step 2: Get an API Key
+
+Sign up for an LLM provider and get an API key. We recommend [OpenRouter](https://openrouter.ai) — it gives you access to many models (DeepSeek, Claude, GPT, Gemini) with a single key.
+
+### Step 3: Install MediClaw
+
+SSH into your cloud VM and run:
 
 ```bash
-curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/bootstrap-cloud.sh | bash
 ```
 
-The installer sets up Node.js if needed, then starts the onboard wizard:
+This installs Docker, Node.js, and MediClaw automatically, then launches a 3-prompt setup wizard:
 
 ```text
   MediClaw Setup
@@ -69,44 +81,64 @@ The installer sets up Node.js if needed, then starts the onboard wizard:
     3) OpenAI
     4) Anthropic
     5) Google Gemini
-  Choose [1]:
+  Choose [1]: 1
+
+  Paste your API key below. Input is hidden for security —
+  you won't see characters as you type. Press Enter when done.
 
   API key: ********
 
-  Model [openrouter/auto]:
+  Model [deepseek/deepseek-v3.2]: <press Enter for default>
+```
 
-  Provider: OpenRouter (recommended)
-  Model:    openrouter/auto
-  Sandbox:  medical-assistant
+The setup takes approximately 10-12 minutes. When complete, you will see:
 
-  Setting up...
-  ✓ Gateway started
-  ✓ Sandbox created
-  ✓ Medical policies applied
-
+```text
   ──────────────────────────────────────────────────
   Sandbox      medical-assistant (Landlock + seccomp + netns)
+  Model        deepseek/deepseek-v3.2 (OpenRouter)
   ──────────────────────────────────────────────────
   Run:         nemoclaw medical-assistant connect
+  Status:      nemoclaw medical-assistant status
+  Logs:        nemoclaw medical-assistant logs --follow
   ──────────────────────────────────────────────────
 ```
 
-That's it. No infrastructure to configure, no policies to write.
+### Step 4: Activate MediClaw in Your Shell
 
-> **For advanced users:** Run `nemoclaw onboard --advanced` for the full setup wizard with custom providers, local inference (Ollama, vLLM), NIM containers, and granular policy control.
+After install, run this once to make the `nemoclaw` command available:
 
-### Chat with the Agent
+```bash
+source ~/.bashrc
+```
+
+This is only needed once after the initial install. Future terminal sessions will have `nemoclaw` available automatically.
+
+### Step 5: Connect and Chat
 
 ```bash
 # Connect to the sandbox
 nemoclaw medical-assistant connect
 
-# Inside the sandbox, open the interactive TUI
+# Inside the sandbox, open the interactive chat UI
 openclaw tui
-
-# Or send a single message via CLI
-openclaw agent --agent main --local -m "What are the latest guidelines for hypertension management?" --session-id test
 ```
+
+You are now chatting with your medical assistant. Try a query:
+
+```text
+What are the latest CDC guidelines for hypertension management?
+```
+
+To send a single message without the TUI:
+
+```bash
+openclaw agent --agent main --local -m "Summarize the latest PubMed research on GLP-1 agonists for type 2 diabetes" --session-id test
+```
+
+Type `exit` to leave the sandbox and return to the host.
+
+> **For advanced users:** Run `nemoclaw onboard --advanced` for the full setup wizard with custom providers, local inference (Ollama, vLLM), NIM containers, and granular policy control.
 
 ### Uninstall
 
@@ -189,7 +221,7 @@ Inference requests from the agent never leave the sandbox directly. OpenShell in
 
 | Provider | Default Model | Notes |
 |----------|---------------|-------|
-| **OpenRouter** (default) | `openrouter/auto` | Access to many models with one key |
+| **OpenRouter** (default) | `deepseek/deepseek-v3.2` | Access to many models with one key |
 | NVIDIA Endpoints | `nvidia/nemotron-3-super-120b-a12b` | Curated hosted models |
 | OpenAI | `gpt-5.4` | GPT models |
 | Anthropic | `claude-sonnet-4-6` | Claude models |
@@ -261,6 +293,14 @@ MediClaw ships 14 policy presets in `nemoclaw-blueprint/policies/presets/`:
 | `nemoclaw <name> policy-list` | List presets (applied and available) |
 | `nemoclaw <name> destroy` | Stop and delete sandbox |
 | `openshell term` | Launch OpenShell TUI for monitoring |
+
+### Inside the Sandbox
+
+| Command | Description |
+|---------|-------------|
+| `openclaw tui` | Interactive chat interface |
+| `openclaw agent --agent main --local -m "..." --session-id test` | Send a single message |
+| `exit` | Leave the sandbox |
 
 See the full [CLI reference](https://docs.nvidia.com/nemoclaw/latest/reference/commands.html) for all commands, flags, and options.
 
