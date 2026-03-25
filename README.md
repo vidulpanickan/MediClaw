@@ -17,8 +17,9 @@ CDC, WHO, FDA, ClinicalTrials.gov, MDCalc, and more. The goal is to see what's p
 opportunities and the risks — before AI assistants become part of clinical workflows.
 
 > [!CAUTION]
-> **This is an experiment, not a product.** MediClaw is for exploration and learning only.
-> Do not use it for patient care, clinical decisions, or any production workflow.
+> Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw), which is still in alpha.
+> MediClaw is strictly for demonstration and learning — never for on-premises deployment
+> at any healthcare system. Do not use for patient care or clinical decisions.
 > AI outputs may be inaccurate, incomplete, or harmful. Always verify with authoritative sources.
 
 ---
