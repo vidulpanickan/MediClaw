@@ -57,49 +57,47 @@ check_environment() {
     return
   fi
 
-  local is_cloud=false
+  local has_metadata=false
+  local has_cloud_init=false
 
-  # Check cloud metadata endpoint (AWS, GCP, Azure, DigitalOcean)
+  # Check 1: Cloud metadata endpoint (AWS, GCP, Azure, DigitalOcean).
+  # This link-local IP only exists on cloud provider infrastructure.
+  # On-prem VMs, personal machines, and hospital servers do not have it.
   if curl -sf -m 2 http://169.254.169.254/ >/dev/null 2>&1; then
-    is_cloud=true
+    has_metadata=true
   fi
 
-  # Check virtualization (systemd-detect-virt)
-  if command_exists systemd-detect-virt; then
-    local virt
-    virt=$(systemd-detect-virt 2>/dev/null || echo "none")
-    if [[ "$virt" != "none" ]]; then
-      is_cloud=true
-    fi
+  # Check 2: cloud-init must be present. Every standard cloud image
+  # (Ubuntu, Debian, RHEL, Amazon Linux) ships with cloud-init.
+  # On-prem servers and personal machines do not have it by default.
+  if [[ -d /run/cloud-init ]] || [[ -d /var/lib/cloud ]]; then
+    has_cloud_init=true
   fi
 
-  # Check DMI for cloud provider strings
-  if [[ -f /sys/class/dmi/id/product_name ]]; then
-    local product
-    product=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "")
-    if echo "$product" | grep -qiE "droplet|google|virtual|hvm|kvm|ec2|azure|standard"; then
-      is_cloud=true
-    fi
+  # Both checks must pass — this prevents on-prem VMs (which may have
+  # one signal but not both) from being mistaken for cloud instances.
+  if [[ "$has_metadata" == "true" && "$has_cloud_init" == "true" ]]; then
+    return
   fi
 
-  if [[ "$is_cloud" == "false" ]]; then
-    echo ""
-    printf "  ${C_RED}${C_BOLD}Personal machine detected${C_RESET}\n"
-    echo ""
-    echo "  MediClaw is designed to run on cloud servers, not personal machines."
-    echo "  This protects patient data by keeping the AI assistant in a controlled"
-    echo "  server environment, separate from personal devices."
-    echo ""
-    echo "  To set up MediClaw:"
-    echo "    1. Create a cloud VM (DigitalOcean, AWS, GCP, or Azure)"
-    echo "    2. SSH into the VM"
-    echo "    3. Run this script there"
-    echo ""
-    echo "  If you are an IT admin testing locally, set:"
-    echo "    MEDICLAW_ALLOW_LOCAL=1"
-    echo ""
-    exit 1
-  fi
+  echo ""
+  printf "  ${C_RED}${C_BOLD}Cloud VM not detected${C_RESET}\n"
+  echo ""
+  echo "  MediClaw can only be installed on cloud VMs (DigitalOcean, AWS,"
+  echo "  GCP, or Azure). It cannot run on personal machines, hospital"
+  echo "  workstations, or on-premises servers."
+  echo ""
+  echo "  This ensures patient data stays in a controlled cloud environment"
+  echo "  with proper isolation and security policies."
+  echo ""
+  echo "  To set up MediClaw:"
+  echo "    1. Create a cloud VM (DigitalOcean, AWS, GCP, or Azure)"
+  echo "    2. SSH into the VM"
+  echo "    3. Run this script there"
+  echo ""
+  echo "  If you are an IT admin testing, set MEDICLAW_ALLOW_LOCAL=1"
+  echo ""
+  exit 1
 }
 
 check_environment
