@@ -123,8 +123,6 @@ do_stop() {
 }
 
 do_start() {
-  [ -n "${NVIDIA_API_KEY:-}" ] || fail "NVIDIA_API_KEY required"
-
   if [ -z "${TELEGRAM_BOT_TOKEN:-}" ]; then
     warn "TELEGRAM_BOT_TOKEN not set — Telegram bridge will not start."
     warn "Create a bot via @BotFather on Telegram and set the token."
