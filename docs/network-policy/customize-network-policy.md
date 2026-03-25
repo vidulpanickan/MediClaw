@@ -106,7 +106,6 @@ Available presets:
 | `huggingface` | Hugging Face model registry |
 | `jira` | Atlassian Jira API |
 | `npm` | npm and Yarn registries |
-| `outlook` | Microsoft 365 and Outlook |
 | `pypi` | Python Package Index |
 | `slack` | Slack API and webhooks |
 | `telegram` | Telegram Bot API |

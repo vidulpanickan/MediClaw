@@ -17,13 +17,13 @@ set -euo pipefail
 
 # ---------------------------------------------------------------------------
 # Color / style — disabled when NO_COLOR is set or stdout is not a TTY.
-# Uses exact NVIDIA green #76B900 on truecolor terminals; 256-color otherwise.
+# Uses medical blue #0077B6 on truecolor terminals; 256-color otherwise.
 # ---------------------------------------------------------------------------
 if [[ -z "${NO_COLOR:-}" && -t 1 ]]; then
   if [[ "${COLORTERM:-}" == "truecolor" || "${COLORTERM:-}" == "24bit" ]]; then
-    C_GREEN=$'\033[38;2;118;185;0m' # #76B900 — exact NVIDIA green
+    C_GREEN=$'\033[38;2;0;119;182m' # #0077B6 — medical blue
   else
-    C_GREEN=$'\033[38;5;148m' # closest 256-color on dark backgrounds
+    C_GREEN=$'\033[38;5;32m' # closest 256-color on dark backgrounds
   fi
   C_BOLD=$'\033[1m'
   C_DIM=$'\033[2m'

@@ -1,6 +1,6 @@
 {
   "id": "nemoclaw",
-  "name": "NemoClaw",
+  "name": "MediClaw",
   "version": "0.1.0",
   "description": "Migrate and run OpenClaw inside OpenShell with optional NIM-backed inference",
   "configSchema": {

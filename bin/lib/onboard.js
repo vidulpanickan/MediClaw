@@ -176,8 +176,8 @@ function isSandboxReady(output, sandboxName) {
 }
 
 /**
- * Determine whether stale NemoClaw gateway output indicates a previous
- * session that should be cleaned up before the port preflight check.
+ * Determine whether a stale gateway from a previous MediClaw session
+ * should be cleaned up before the port preflight check.
  * @param {string} gwInfoOutput - Raw output from `openshell gateway info -g nemoclaw`.
  * @returns {boolean}
  */

@@ -49,7 +49,7 @@ describe("uninstall CLI flags", () => {
       expect(result.status).toBe(0);
       // Banner and bye statement should be present
       const output = `${result.stdout}${result.stderr}`;
-      expect(output).toMatch(/NemoClaw/);
+      expect(output).toMatch(/MediClaw/);
       expect(output).toMatch(/Claws retracted/);
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });

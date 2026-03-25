@@ -29,7 +29,7 @@ filesystem_policy:
                                     # from tampering with auth tokens or CORS.
                                     # Writable state (agents, plugins) lives in
                                     # /sandbox/.openclaw-data via symlinks.
-                                    # Ref: https://github.com/NVIDIA/NemoClaw/issues/514
+                                    # Ref: https://github.com/vidulpanickan/MediClaw/issues/514
   read_write:
     - /sandbox
     - /tmp

@@ -62,7 +62,7 @@ concurrency:
 
 jobs:
   e2e-brev:
-    if: github.repository == 'NVIDIA/NemoClaw'
+    if: github.repository == 'vidulpanickan/MediClaw'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:

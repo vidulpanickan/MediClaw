@@ -198,7 +198,7 @@ exit 98
     });
 
     expect(result.status).toBe(0);
-    expect(fs.readFileSync(gitLog, "utf-8")).toMatch(/clone.*NemoClaw\.git/);
+    expect(fs.readFileSync(gitLog, "utf-8")).toMatch(/clone.*MediClaw\.git/);
   });
 
   it("prints the HTTPS GitHub remediation when the binary is missing", () => {

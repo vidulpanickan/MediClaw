@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /**
- * NemoClaw Blueprint Runner
+ * MediClaw Blueprint Runner
  *
  * Orchestrates OpenClaw sandbox lifecycle inside OpenShell.
  *
