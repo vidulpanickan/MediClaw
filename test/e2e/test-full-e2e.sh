@@ -22,7 +22,7 @@
 # Usage:
 #   NEMOCLAW_NON_INTERACTIVE=1 NVIDIA_API_KEY=nvapi-... bash test/e2e/test-full-e2e.sh
 #
-# See: https://github.com/vidulpanickan/MediClaw/issues/71
+# See: https://github.com/NVIDIA/NemoClaw/issues/71
 
 set -uo pipefail
 

@@ -4,7 +4,7 @@
 // Verify that setup.sh uses a parameterized sandbox name instead of
 // hardcoding "nemoclaw". Gateway name must stay hardcoded.
 //
-// See: https://github.com/vidulpanickan/MediClaw/issues/197
+// See: https://github.com/NVIDIA/NemoClaw/issues/197
 
 import { describe, it, expect } from "vitest";
 import fs from "node:fs";
