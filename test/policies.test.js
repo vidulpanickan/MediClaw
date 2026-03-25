@@ -7,9 +7,9 @@ import policies from "../bin/lib/policies";
 
 describe("policies", () => {
   describe("listPresets", () => {
-    it("returns all 9 presets", () => {
+    it("returns all 14 presets", () => {
       const presets = policies.listPresets();
-      expect(presets.length).toBe(9);
+      expect(presets.length).toBe(14);
     });
 
     it("each preset has name and description", () => {
@@ -21,14 +21,14 @@ describe("policies", () => {
 
     it("returns expected preset names", () => {
       const names = policies.listPresets().map((p) => p.name).sort();
-      const expected = ["discord", "docker", "huggingface", "jira", "npm", "outlook", "pypi", "slack", "telegram"];
+      const expected = ["clinical-guidelines", "clinical-references", "discord", "docker", "huggingface", "jira", "medical-coding", "medical-literature", "medical-research", "nih-resources", "npm", "pypi", "slack", "telegram"];
       expect(names).toEqual(expected);
     });
   });
 
   describe("loadPreset", () => {
     it("loads existing preset", () => {
-      const content = policies.loadPreset("outlook");
+      const content = policies.loadPreset("slack");
       expect(content).toBeTruthy();
       expect(content.includes("network_policies:")).toBeTruthy();
     });
@@ -44,13 +44,11 @@ describe("policies", () => {
   });
 
   describe("getPresetEndpoints", () => {
-    it("extracts hosts from outlook preset", () => {
-      const content = policies.loadPreset("outlook");
+    it("extracts hosts from medical-research preset", () => {
+      const content = policies.loadPreset("medical-research");
       const hosts = policies.getPresetEndpoints(content);
-      expect(hosts.includes("graph.microsoft.com")).toBeTruthy();
-      expect(hosts.includes("login.microsoftonline.com")).toBeTruthy();
-      expect(hosts.includes("outlook.office365.com")).toBeTruthy();
-      expect(hosts.includes("outlook.office.com")).toBeTruthy();
+      expect(hosts.includes("pubmed.ncbi.nlm.nih.gov")).toBeTruthy();
+      expect(hosts.includes("www.medscape.com")).toBeTruthy();
     });
 
     it("extracts hosts from telegram preset", () => {

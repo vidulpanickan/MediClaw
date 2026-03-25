@@ -2113,10 +2113,92 @@ function printDashboard(sandboxName, model, provider, nimContainer = null) {
   console.log("");
 }
 
+// ── Simple onboard (default) ─────────────────────────────────────
+// Streamlined 3-prompt flow for clinicians: provider, API key, model.
+// Delegates to the existing non-interactive pipeline after collecting input.
+
+const SIMPLE_PROVIDERS = [
+  { label: "OpenRouter (recommended)", key: "custom", credEnv: "COMPATIBLE_API_KEY",
+    endpoint: "https://openrouter.ai/api/v1", defaultModel: "openrouter/auto" },
+  { label: "NVIDIA Endpoints", key: "build", credEnv: "NVIDIA_API_KEY",
+    endpoint: null, defaultModel: "nvidia/nemotron-3-super-120b-a12b" },
+  { label: "OpenAI", key: "openai", credEnv: "OPENAI_API_KEY",
+    endpoint: null, defaultModel: "gpt-5.4" },
+  { label: "Anthropic", key: "anthropic", credEnv: "ANTHROPIC_API_KEY",
+    endpoint: null, defaultModel: "claude-sonnet-4-6" },
+  { label: "Google Gemini", key: "gemini", credEnv: "GEMINI_API_KEY",
+    endpoint: null, defaultModel: "gemini-2.5-flash" },
+];
+
+const ALL_MEDICAL_PRESETS = "pypi,npm,medical-research,clinical-references,nih-resources,clinical-guidelines,medical-coding,medical-literature";
+
+async function simpleOnboard() {
+  console.log("");
+  console.log("  MediClaw Setup");
+  console.log("  ==============");
+  console.log("");
+
+  // 1. Provider selection
+  console.log("  LLM Provider:");
+  SIMPLE_PROVIDERS.forEach((p, i) => {
+    console.log(`    ${i + 1}) ${p.label}`);
+  });
+  console.log("");
+  const providerChoice = await prompt("  Choose [1]: ");
+  const providerIdx = parseInt(providerChoice || "1", 10) - 1;
+  const selected = SIMPLE_PROVIDERS[providerIdx] || SIMPLE_PROVIDERS[0];
+
+  // 2. API key
+  const apiKey = await prompt(`  API key: `, { secret: true });
+  if (!apiKey) {
+    console.error("  API key is required.");
+    process.exit(1);
+  }
+
+  // 3. Model
+  const model = await prompt(`  Model [${selected.defaultModel}]: `);
+
+  // Set env vars for the non-interactive pipeline
+  process.env.NEMOCLAW_PROVIDER = selected.key;
+  process.env[selected.credEnv] = apiKey;
+  if (selected.endpoint) {
+    process.env.NEMOCLAW_ENDPOINT_URL = selected.endpoint;
+  }
+  if (model) {
+    process.env.NEMOCLAW_MODEL = model;
+  }
+  process.env.NEMOCLAW_SANDBOX_NAME = process.env.NEMOCLAW_SANDBOX_NAME || "medical-assistant";
+  process.env.NEMOCLAW_POLICY_MODE = "custom";
+  process.env.NEMOCLAW_POLICY_PRESETS = process.env.NEMOCLAW_POLICY_PRESETS || ALL_MEDICAL_PRESETS;
+
+  console.log("");
+  console.log(`  Provider: ${selected.label}`);
+  console.log(`  Model:    ${model || selected.defaultModel}`);
+  console.log(`  Sandbox:  ${process.env.NEMOCLAW_SANDBOX_NAME}`);
+  console.log("");
+
+  // Delegate to non-interactive pipeline
+  NON_INTERACTIVE = true;
+  return advancedOnboard();
+}
+
 // ── Main ─────────────────────────────────────────────────────────
 
 async function onboard(opts = {}) {
-  NON_INTERACTIVE = opts.nonInteractive || process.env.NEMOCLAW_NON_INTERACTIVE === "1";
+  // Default: simple 3-prompt flow. Use --advanced for full wizard.
+  if (!opts.advanced && !opts.nonInteractive) {
+    return simpleOnboard();
+  }
+  return advancedOnboard(opts);
+}
+
+async function advancedOnboard(opts = {}) {
+  if (opts.nonInteractive) {
+    NON_INTERACTIVE = true;
+  }
+  if (!NON_INTERACTIVE) {
+    NON_INTERACTIVE = opts.nonInteractive || process.env.NEMOCLAW_NON_INTERACTIVE === "1";
+  }
   delete process.env.OPENSHELL_GATEWAY;
 
   console.log("");

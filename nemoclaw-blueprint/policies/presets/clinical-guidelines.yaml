@@ -2,14 +2,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 preset:
-  name: outlook
-  description: "Microsoft Outlook and Graph API access"
+  name: clinical-guidelines
+  description: "CDC, WHO, FDA, and AHA clinical guidelines"
 
 network_policies:
-  outlook_graph:
-    name: outlook_graph
+  clinical_guidelines:
+    name: clinical_guidelines
     endpoints:
-      - host: graph.microsoft.com
+      - host: www.cdc.gov
         port: 443
         protocol: rest
         enforcement: enforce
@@ -17,7 +17,7 @@ network_policies:
         rules:
           - allow: { method: GET, path: "/**" }
           - allow: { method: POST, path: "/**" }
-      - host: login.microsoftonline.com
+      - host: www.who.int
         port: 443
         protocol: rest
         enforcement: enforce
@@ -25,7 +25,7 @@ network_policies:
         rules:
           - allow: { method: GET, path: "/**" }
           - allow: { method: POST, path: "/**" }
-      - host: outlook.office365.com
+      - host: www.fda.gov
         port: 443
         protocol: rest
         enforcement: enforce
@@ -33,7 +33,15 @@ network_policies:
         rules:
           - allow: { method: GET, path: "/**" }
           - allow: { method: POST, path: "/**" }
-      - host: outlook.office.com
+      - host: api.fda.gov
+        port: 443
+        protocol: rest
+        enforcement: enforce
+        tls: terminate
+        rules:
+          - allow: { method: GET, path: "/**" }
+          - allow: { method: POST, path: "/**" }
+      - host: www.ahajournals.org
         port: 443
         protocol: rest
         enforcement: enforce
@@ -43,3 +51,4 @@ network_policies:
           - allow: { method: POST, path: "/**" }
     binaries:
       - { path: /usr/local/bin/node }
+      - { path: /usr/local/bin/python3 }

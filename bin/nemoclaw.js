@@ -73,15 +73,16 @@ function exitWithSpawnResult(result) {
 
 async function onboard(args) {
   const { onboard: runOnboard } = require("./lib/onboard");
-  const allowedArgs = new Set(["--non-interactive"]);
+  const allowedArgs = new Set(["--non-interactive", "--advanced"]);
   const unknownArgs = args.filter((arg) => !allowedArgs.has(arg));
   if (unknownArgs.length > 0) {
     console.error(`  Unknown onboard option(s): ${unknownArgs.join(", ")}`);
-    console.error("  Usage: nemoclaw onboard [--non-interactive]");
+    console.error("  Usage: nemoclaw onboard [--advanced | --non-interactive]");
     process.exit(1);
   }
   const nonInteractive = args.includes("--non-interactive");
-  await runOnboard({ nonInteractive });
+  const advanced = args.includes("--advanced");
+  await runOnboard({ nonInteractive, advanced });
 }
 
 async function setup() {
@@ -401,7 +402,8 @@ function help() {
   ${D}Deploy more secure, always-on AI assistants with a single command.${R}
 
   ${G}Getting Started:${R}
-    ${B}nemoclaw onboard${R}                 Configure inference endpoint and credentials
+    ${B}nemoclaw onboard${R}                 Set up MediClaw ${D}(3 prompts: provider, key, model)${R}
+    nemoclaw onboard --advanced      Full setup wizard ${D}(custom providers, endpoints)${R}
     nemoclaw setup-spark             Set up on DGX Spark ${D}(fixes cgroup v2 + Docker)${R}
 
   ${G}Sandbox Management:${R}
