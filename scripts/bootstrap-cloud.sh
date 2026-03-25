@@ -14,7 +14,7 @@ set -euo pipefail
 # Colors (disabled when NO_COLOR is set or stdout is not a TTY)
 # ---------------------------------------------------------------------------
 if [[ -z "${NO_COLOR:-}" && -t 1 ]]; then
-  C_GREEN=$'\033[1;32m'
+  C_GREEN=$'\033[38;5;32m'
   C_YELLOW=$'\033[1;33m'
   C_CYAN=$'\033[1;36m'
   C_RED=$'\033[1;31m'
