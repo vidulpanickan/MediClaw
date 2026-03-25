@@ -43,6 +43,63 @@ if [[ "$(uname -s)" != "Linux" ]]; then
 fi
 
 # ---------------------------------------------------------------------------
+# Require cloud/server environment (not personal machines)
+# ---------------------------------------------------------------------------
+check_environment() {
+  # Allow override for IT admins testing locally
+  if [[ "${MEDICLAW_ALLOW_LOCAL:-}" == "1" ]]; then
+    warn "Local install override enabled (MEDICLAW_ALLOW_LOCAL=1)"
+    return
+  fi
+
+  local is_cloud=false
+
+  # Check cloud metadata endpoint (AWS, GCP, Azure, DigitalOcean)
+  if curl -sf -m 2 http://169.254.169.254/ >/dev/null 2>&1; then
+    is_cloud=true
+  fi
+
+  # Check virtualization (systemd-detect-virt)
+  if command_exists systemd-detect-virt; then
+    local virt
+    virt=$(systemd-detect-virt 2>/dev/null || echo "none")
+    if [[ "$virt" != "none" ]]; then
+      is_cloud=true
+    fi
+  fi
+
+  # Check DMI for cloud provider strings
+  if [[ -f /sys/class/dmi/id/product_name ]]; then
+    local product
+    product=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "")
+    if echo "$product" | grep -qiE "droplet|google|virtual|hvm|kvm|ec2|azure|standard"; then
+      is_cloud=true
+    fi
+  fi
+
+  if [[ "$is_cloud" == "false" ]]; then
+    echo ""
+    printf "  ${C_RED}${C_BOLD}Personal machine detected${C_RESET}\n"
+    echo ""
+    echo "  MediClaw is designed to run on cloud servers, not personal machines."
+    echo "  This protects patient data by keeping the AI assistant in a controlled"
+    echo "  server environment, separate from personal devices."
+    echo ""
+    echo "  To set up MediClaw:"
+    echo "    1. Create a cloud VM (DigitalOcean, AWS, GCP, or Azure)"
+    echo "    2. SSH into the VM"
+    echo "    3. Run this script there"
+    echo ""
+    echo "  If you are an IT admin testing locally, set:"
+    echo "    MEDICLAW_ALLOW_LOCAL=1"
+    echo ""
+    exit 1
+  fi
+}
+
+check_environment
+
+# ---------------------------------------------------------------------------
 # Require root (or sudo)
 # ---------------------------------------------------------------------------
 SUDO=""
