@@ -24,6 +24,10 @@ and limitations in a controlled environment before considering production deploy
 > at any healthcare system. Do not use for patient care or clinical decisions.
 > AI outputs may be inaccurate, incomplete, or harmful. Always verify with authoritative sources.
 
+**Disclaimer:** This is a personal open-source project. It is not affiliated with, endorsed by,
+or supported by Harvard University, Harvard Medical School, or any other institution. The views
+and code in this project are the author's own.
+
 ---
 
 ## Table of Contents
