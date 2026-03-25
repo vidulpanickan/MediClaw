@@ -39,7 +39,12 @@ command_exists() { command -v "$1" &>/dev/null; }
 # Require Linux
 # ---------------------------------------------------------------------------
 if [[ "$(uname -s)" != "Linux" ]]; then
-  error "This script is for Linux only. On macOS, install Docker Desktop and run install.sh directly."
+  error "MediClaw must be installed on a cloud Linux server, not a personal machine.
+
+  To set up MediClaw:
+    1. Create a cloud VM (DigitalOcean, AWS, GCP, or Azure)
+    2. SSH into the VM
+    3. Run this script there"
 fi
 
 # ---------------------------------------------------------------------------
