@@ -14,19 +14,15 @@ Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and the
 [OpenClaw](https://openclaw.ai) agent inside a policy-enforced sandbox that monitors all network
 egress, file system access, and inference API calls.
 
-The sandbox ships with pre-approved access to **30+ medical resources** — including PubMed, Medscape,
-CDC, WHO, FDA, ClinicalTrials.gov, and MDCalc — enabling healthcare teams to evaluate AI capabilities
+The sandbox ships with pre-approved access to **30+ medical resources**, including PubMed, Medscape,
+CDC, WHO, FDA, ClinicalTrials.gov, and MDCalc, enabling healthcare teams to evaluate AI capabilities
 and limitations in a controlled environment before considering production deployment.
 
 > [!CAUTION]
 > Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw), which is still in alpha.
-> MediClaw is strictly for demonstration and learning — never for on-premises deployment
+> MediClaw is strictly for demonstration and learning. Never for on-premises deployment
 > at any healthcare system. Do not use for patient care or clinical decisions.
 > AI outputs may be inaccurate, incomplete, or harmful. Always verify with authoritative sources.
-
-**Disclaimer:** This is a personal open-source project. It is not affiliated with, endorsed by,
-or supported by Harvard University, Harvard Medical School, or any other institution. The views
-and code in this project are the author's own.
 
 ---
 
@@ -52,16 +48,16 @@ and code in this project are the author's own.
 ## Why MediClaw
 
 Healthcare is one of the highest-stakes environments for AI. Before deploying AI assistants in
-clinical settings, teams need a safe way to experiment — to understand what AI gets right, what
+clinical settings, teams need a safe way to experiment: to understand what AI gets right, what
 it gets wrong, and where the boundaries are.
 
 MediClaw provides that sandbox:
 
-- **Pre-loaded medical access** — PubMed, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more resources available out of the box
-- **Deny-by-default networking** — the agent can only reach explicitly allowed domains, so you can observe exactly what it tries to access
-- **Credential isolation** — API keys never enter the sandbox; auth is injected at the proxy layer
-- **Cloud-only deployment** — runs on cloud VMs, not personal machines, keeping experiments separate from clinical systems
-- **Operator oversight** — blocked requests surface in a real-time TUI so you can see what the agent wants to do
+- **Pre-loaded medical access**: PubMed, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more resources available out of the box
+- **Deny-by-default networking**: the agent can only reach explicitly allowed domains, so you can observe exactly what it tries to access
+- **Credential isolation**: API keys never enter the sandbox; auth is injected at the proxy layer
+- **Cloud-only deployment**: runs on cloud VMs, not personal machines, keeping experiments separate from clinical systems
+- **Operator oversight**: blocked requests surface in a real-time TUI so you can see what the agent wants to do
 
 Built on [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) with four isolation layers:
 filesystem (Landlock), network (HTTP proxy + OPA/Rego), process (seccomp BPF), and inference routing.
@@ -86,7 +82,7 @@ Get a sandbox running in ~10 minutes. You need a cloud VM and an LLM API key.
 
 ### Step 2: Get an API Key
 
-Sign up for an LLM provider. We recommend **[OpenRouter](https://openrouter.ai)** — one key gives
+Sign up for an LLM provider. We recommend **[OpenRouter](https://openrouter.ai)**. One key gives
 you access to DeepSeek, Claude, GPT, Gemini, and more.
 
 ### Step 3: Install
@@ -111,7 +107,7 @@ LLM Provider:
   5) Google Gemini
 Choose [1]: 1
 
-Paste your API key below. Input is hidden for security —
+Paste your API key below. Input is hidden for security.
 you won't see characters as you type. Press Enter when done.
 
 API key: ********
@@ -366,3 +362,9 @@ curl -fsSL https://raw.githubusercontent.com/vidulpanickan/MediClaw/refs/heads/m
 This project is licensed under the [Apache License 2.0](LICENSE).
 
 Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
+
+## Disclaimer
+
+This is a personal open-source project. It is not affiliated with, endorsed by, or supported by
+Harvard University, Harvard Medical School, or any other institution. The views and code in this
+project are the author's own.
