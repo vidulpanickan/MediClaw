@@ -1,24 +1,25 @@
 # MediClaw
 
 <p align="center">
-  <strong>Secure AI Assistants for Healthcare</strong>
+  <strong>A Sandbox for Exploring AI in Healthcare</strong>
   <br><br>
   <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue" alt="License"></a>
   <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/SECURITY.md"><img src="https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red" alt="Security"></a>
   <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Status"></a>
 </p>
 
-MediClaw is a secure AI assistant stack purpose-built for clinicians, nurses, and healthcare teams.
-It runs an [OpenClaw](https://openclaw.ai) always-on agent inside a sandboxed [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell)
-environment where every network request, file access, and inference call is governed by policy.
+MediClaw is an experimental sandbox that lets anyone in healthcare — clinicians, nurses, researchers,
+IT teams — explore what AI agents can do in a medical setting. It runs an [OpenClaw](https://openclaw.ai)
+agent inside a sandboxed [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) environment with
+access to **30+ medical websites and APIs** (PubMed, Medscape, CDC, WHO, FDA, MDCalc, and more).
 
-Out of the box, MediClaw provides access to **30+ medical websites and APIs** — PubMed, Medscape,
-ClinicalTrials.gov, UpToDate, CDC, WHO, FDA, MDCalc, and more — while blocking all unauthorized
-network access.
+The goal is to see what's possible — both the opportunities and the risks — before AI assistants
+become part of clinical workflows.
 
-> [!WARNING]
-> **Alpha software.** MediClaw is available in early preview (March 2026). Not production-ready.
-> Interfaces and behavior may change without notice.
+> [!CAUTION]
+> **This is an experiment, not a product.** MediClaw is for exploration and learning only.
+> Do not use it for patient care, clinical decisions, or any production workflow.
+> AI outputs may be inaccurate, incomplete, or harmful. Always verify with authoritative sources.
 
 ---
 
@@ -32,7 +33,7 @@ network access.
   - [Connect and Chat](#step-4-connect-and-chat)
 - [Pre-Approved Medical Resources](#pre-approved-medical-resources)
 - [Inference Providers](#inference-providers)
-- [Security Model](#security-model)
+- [Isolation Model](#isolation-model)
 - [Policy Presets](#policy-presets)
 - [Command Reference](#command-reference)
 - [Uninstall](#uninstall)
@@ -43,24 +44,26 @@ network access.
 
 ## Why MediClaw
 
-Traditional AI assistants have unrestricted network access, creating risk in clinical settings.
-MediClaw takes a different approach:
+Healthcare is one of the highest-stakes environments for AI. Before deploying AI assistants in
+clinical settings, teams need a safe way to experiment — to understand what AI gets right, what
+it gets wrong, and where the boundaries are.
 
-- **Deny-by-default networking** — the agent can only reach explicitly allowed domains
-- **30+ pre-approved medical resources** — PubMed, CDC, FDA, WHO, and more, allowed out of the box
+MediClaw provides that sandbox:
+
+- **Pre-loaded medical access** — PubMed, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more resources available out of the box
+- **Deny-by-default networking** — the agent can only reach explicitly allowed domains, so you can observe exactly what it tries to access
 - **Credential isolation** — API keys never enter the sandbox; auth is injected at the proxy layer
-- **Binary-restricted endpoints** — only `node` and `python3` can reach allowed domains
-- **Cloud-only deployment** — blocks installs on personal machines and on-prem servers
-- **Operator oversight** — blocked requests surface in a real-time TUI for approval or denial
+- **Cloud-only deployment** — runs on cloud VMs, not personal machines, keeping experiments separate from clinical systems
+- **Operator oversight** — blocked requests surface in a real-time TUI so you can see what the agent wants to do
 
-Built on [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) with four defense-in-depth layers:
+Built on [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) with four isolation layers:
 filesystem (Landlock), network (HTTP proxy + OPA/Rego), process (seccomp BPF), and inference routing.
 
 ---
 
 ## Quick Start
 
-MediClaw runs on cloud servers only. You need a cloud VM and an LLM API key.
+Get a sandbox running in ~10 minutes. You need a cloud VM and an LLM API key.
 
 ### Step 1: Create a Cloud VM
 
@@ -232,7 +235,7 @@ The agent never sees API keys or upstream endpoints. OpenShell intercepts every 
 
 ---
 
-## Security Model
+## Isolation Model
 
 ```text
 ┌─────────────────────────────────────┐
