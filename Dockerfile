@@ -43,7 +43,7 @@ RUN groupadd -r gateway && useradd -r -g gateway -d /sandbox -s /usr/sbin/nologi
 # The policy makes /sandbox/.openclaw read-only via Landlock, so the agent
 # cannot modify openclaw.json, auth tokens, or CORS settings.  Writable
 # state (agents, plugins, etc.) lives in .openclaw-data, reached via symlinks.
-# Ref: https://github.com/vidulpanickan/MediClaw/issues/514
+# Ref: https://github.com/NVIDIA/NemoClaw/issues/514
 RUN mkdir -p /sandbox/.openclaw-data/agents/main/agent \
         /sandbox/.openclaw-data/extensions \
         /sandbox/.openclaw-data/workspace \
@@ -170,7 +170,7 @@ RUN openclaw doctor --fix > /dev/null 2>&1 || true \
 # it at runtime.  This works regardless of Landlock enforcement status.
 # The Landlock policy (/sandbox/.openclaw in read_only) provides defense-in-depth
 # once OpenShell enables enforcement.
-# Ref: https://github.com/vidulpanickan/MediClaw/issues/514
+# Ref: https://github.com/NVIDIA/NemoClaw/issues/514
 # Lock the entire .openclaw directory tree.
 # SECURITY: chmod 755 (not 1777) — the sandbox user can READ but not WRITE
 # to this directory. This prevents the agent from replacing symlinks
