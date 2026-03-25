@@ -36,7 +36,6 @@ const ALLOWED_CHATS = process.env.ALLOWED_CHAT_IDS
   : null;
 
 if (!TOKEN) { console.error("TELEGRAM_BOT_TOKEN required"); process.exit(1); }
-if (!API_KEY) { console.error("NVIDIA_API_KEY required"); process.exit(1); }
 
 let offset = 0;
 const activeSessions = new Map(); // chatId → message history
@@ -105,7 +104,8 @@ function runAgentInSandbox(message, sessionId) {
     // The remote command reads them from environment/stdin rather than
     // embedding user content in a shell string.
     const safeSessionId = String(sessionId).replace(/[^a-zA-Z0-9-]/g, "");
-    const cmd = `export NVIDIA_API_KEY=${shellQuote(API_KEY)} && nemoclaw-start openclaw agent --agent main --local -m ${shellQuote(message)} --session-id ${shellQuote("tg-" + safeSessionId)}`;
+    const envPrefix = API_KEY ? `export NVIDIA_API_KEY=${shellQuote(API_KEY)} && ` : "";
+    const cmd = `${envPrefix}nemoclaw-start openclaw agent --agent main --local -m ${shellQuote(message)} --session-id ${shellQuote("tg-" + safeSessionId)}`;
 
     const proc = spawn("ssh", ["-T", "-F", confPath, `openshell-${SANDBOX}`, cmd], {
       timeout: 120000,
