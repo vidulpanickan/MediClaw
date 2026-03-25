@@ -1,162 +1,160 @@
-# MediClaw: Secure AI Assistants for Healthcare
+# MediClaw
 
-> Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and [OpenShell](https://github.com/NVIDIA/OpenShell)
+<p align="center">
+  <strong>Secure AI Assistants for Healthcare</strong>
+  <br><br>
+  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue" alt="License"></a>
+  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/SECURITY.md"><img src="https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red" alt="Security"></a>
+  <a href="https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Status"></a>
+</p>
 
-<!-- start-badges -->
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue)](https://github.com/vidulpanickan/NemoClaw/blob/main/LICENSE)
-[![Security Policy](https://img.shields.io/badge/Security-Report%20a%20Vulnerability-red)](https://github.com/vidulpanickan/NemoClaw/blob/main/SECURITY.md)
-[![Project Status](https://img.shields.io/badge/status-alpha-orange)](https://github.com/vidulpanickan/NemoClaw/blob/main/docs/about/release-notes.md)
-<!-- end-badges -->
+MediClaw is a secure AI assistant stack purpose-built for clinicians, nurses, and healthcare teams.
+It runs an [OpenClaw](https://openclaw.ai) always-on agent inside a sandboxed [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell)
+environment where every network request, file access, and inference call is governed by policy.
 
-<!-- start-intro -->
-MediClaw is a secure AI assistant stack purpose-built for clinicians, nurses, and healthcare teams. It runs an [OpenClaw](https://openclaw.ai) always-on agent inside a sandboxed [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) environment where every network request, file access, and inference call is governed by policy.
+Out of the box, MediClaw provides access to **30+ medical websites and APIs** — PubMed, Medscape,
+ClinicalTrials.gov, UpToDate, CDC, WHO, FDA, MDCalc, and more — while blocking all unauthorized
+network access.
 
-Out of the box, MediClaw provides access to **30+ medical websites and APIs** including PubMed, Medscape, ClinicalTrials.gov, UpToDate, CDC, WHO, FDA, MDCalc, and more — while blocking all unauthorized network access.
-<!-- end-intro -->
-
-> **Alpha software**
->
-> MediClaw is available in early preview starting March 16, 2026.
-> This software is not production-ready.
-> Interfaces, APIs, and behavior may change without notice.
-> We welcome issues and discussion from the community while the project evolves.
+> [!WARNING]
+> **Alpha software.** MediClaw is available in early preview (March 2026). Not production-ready.
+> Interfaces and behavior may change without notice.
 
 ---
 
-## About
+## Table of Contents
 
-MediClaw solves a critical problem in healthcare AI: **how do you give an AI agent access to medical knowledge while preventing data leaks and unauthorized access?**
+- [Why MediClaw](#why-mediclaw)
+- [Quick Start](#quick-start)
+  - [Create a Cloud VM](#step-1-create-a-cloud-vm)
+  - [Get an API Key](#step-2-get-an-api-key)
+  - [Install](#step-3-install)
+  - [Connect and Chat](#step-4-connect-and-chat)
+- [Pre-Approved Medical Resources](#pre-approved-medical-resources)
+- [Inference Providers](#inference-providers)
+- [Security Model](#security-model)
+- [Policy Presets](#policy-presets)
+- [Command Reference](#command-reference)
+- [Uninstall](#uninstall)
+- [Learn More](#learn-more)
+- [License](#license)
 
-Traditional AI assistants have unrestricted network access, creating risk in clinical settings. MediClaw takes a different approach:
+---
+
+## Why MediClaw
+
+Traditional AI assistants have unrestricted network access, creating risk in clinical settings.
+MediClaw takes a different approach:
 
 - **Deny-by-default networking** — the agent can only reach explicitly allowed domains
-- **Pre-approved medical resources** — PubMed, Medscape, CDC, FDA, WHO, ClinicalTrials.gov, and 20+ more are allowed out of the box
-- **Credential isolation** — API keys never enter the sandbox; authentication is injected at the proxy layer
-- **Binary-restricted endpoints** — only `node` and `python3` can access allowed domains, preventing data exfiltration via `curl` or `wget`
+- **30+ pre-approved medical resources** — PubMed, CDC, FDA, WHO, and more, allowed out of the box
+- **Credential isolation** — API keys never enter the sandbox; auth is injected at the proxy layer
+- **Binary-restricted endpoints** — only `node` and `python3` can reach allowed domains
+- **Cloud-only deployment** — blocks installs on personal machines and on-prem servers
 - **Operator oversight** — blocked requests surface in a real-time TUI for approval or denial
-- **Cloud-only deployment** — the bootstrap script blocks installs on personal machines, ensuring the assistant runs in a controlled server environment
 
-MediClaw is built on NVIDIA's [OpenShell](https://github.com/NVIDIA/OpenShell) runtime (part of NVIDIA Agent Toolkit) which provides four defense-in-depth layers: filesystem (Landlock), network (HTTP proxy + OPA/Rego), process (seccomp BPF), and inference routing.
+Built on [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) with four defense-in-depth layers:
+filesystem (Landlock), network (HTTP proxy + OPA/Rego), process (seccomp BPF), and inference routing.
 
 ---
 
 ## Quick Start
 
-MediClaw is designed to run on cloud servers, not personal machines. You need a cloud VM and an API key from an LLM provider.
+MediClaw runs on cloud servers only. You need a cloud VM and an LLM API key.
 
 ### Step 1: Create a Cloud VM
 
-Create a Linux VM on any cloud provider:
-
-| Provider | Recommended size | Notes |
+| Provider | Recommended Size | Notes |
 |----------|-----------------|-------|
-| DigitalOcean | 4 GB RAM / 2 vCPUs | Regular Intel ($24/mo) |
-| AWS | t3.medium or larger | Ubuntu 22.04+ AMI |
-| GCP | e2-medium or larger | Ubuntu 22.04+ |
-| Azure | Standard_B2s or larger | Ubuntu 22.04+ |
+| **DigitalOcean** | 4 GB RAM / 2 vCPUs | Regular Intel ($24/mo) |
+| **AWS** | t3.medium or larger | Ubuntu 22.04+ AMI |
+| **GCP** | e2-medium or larger | Ubuntu 22.04+ |
+| **Azure** | Standard_B2s or larger | Ubuntu 22.04+ |
 
-**Minimum requirements:** 4 GB RAM, 2 vCPUs, 20 GB disk. Recommended: 8 GB RAM.
+> [!NOTE]
+> Minimum: 4 GB RAM, 2 vCPUs, 20 GB disk. Recommended: 8 GB RAM.
 
 ### Step 2: Get an API Key
 
-Sign up for an LLM provider and get an API key. We recommend [OpenRouter](https://openrouter.ai) — it gives you access to many models (DeepSeek, Claude, GPT, Gemini) with a single key.
+Sign up for an LLM provider. We recommend **[OpenRouter](https://openrouter.ai)** — one key gives
+you access to DeepSeek, Claude, GPT, Gemini, and more.
 
-### Step 3: Install MediClaw
+### Step 3: Install
 
-SSH into your cloud VM and run:
+SSH into your VM and run:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/bootstrap-cloud.sh | bash
 ```
 
-This installs Docker, Node.js, and MediClaw automatically, then launches a 3-prompt setup wizard:
+The installer sets up Docker, Node.js, and MediClaw, then launches a 3-prompt wizard:
 
 ```text
-  MediClaw Setup
-  ==============
+MediClaw Setup
+==============
 
-  LLM Provider:
-    1) OpenRouter (recommended)
-    2) NVIDIA Endpoints
-    3) OpenAI
-    4) Anthropic
-    5) Google Gemini
-  Choose [1]: 1
+LLM Provider:
+  1) OpenRouter (recommended)
+  2) NVIDIA Endpoints
+  3) OpenAI
+  4) Anthropic
+  5) Google Gemini
+Choose [1]: 1
 
-  Paste your API key below. Input is hidden for security —
-  you won't see characters as you type. Press Enter when done.
+Paste your API key below. Input is hidden for security —
+you won't see characters as you type. Press Enter when done.
 
-  API key: ********
+API key: ********
 
-  Model [deepseek/deepseek-v3.2]: <press Enter for default>
+Model [deepseek/deepseek-v3.2]:
 ```
 
-The setup takes approximately 10-12 minutes. When complete, you will see:
+Setup takes ~10 minutes. When complete:
 
 ```text
-  ──────────────────────────────────────────────────
-  Sandbox      medical-assistant (Landlock + seccomp + netns)
-  Model        deepseek/deepseek-v3.2 (OpenRouter)
-  ──────────────────────────────────────────────────
-  Run:         nemoclaw medical-assistant connect
-  Status:      nemoclaw medical-assistant status
-  Logs:        nemoclaw medical-assistant logs --follow
-  ──────────────────────────────────────────────────
+──────────────────────────────────────────────────
+Sandbox      medical-assistant (Landlock + seccomp + netns)
+Model        deepseek/deepseek-v3.2 (OpenRouter)
+──────────────────────────────────────────────────
+Run:         nemoclaw medical-assistant connect
+──────────────────────────────────────────────────
 ```
 
-### Step 4: Activate MediClaw in Your Shell
-
-After install, run this once to make the `nemoclaw` command available:
+After install, activate the CLI in your current shell (one-time only):
 
 ```bash
 source ~/.bashrc
 ```
 
-This is only needed once after the initial install. Future terminal sessions will have `nemoclaw` available automatically.
-
-### Step 5: Connect and Chat
+### Step 4: Connect and Chat
 
 ```bash
-# Connect to the sandbox
 nemoclaw medical-assistant connect
+```
 
-# Inside the sandbox, open the interactive chat UI
+Inside the sandbox:
+
+```bash
+# Interactive chat UI
 openclaw tui
+
+# Or send a single message
+openclaw agent --agent main --local \
+  -m "What are the latest CDC guidelines for hypertension?" \
+  --session-id test
 ```
 
-You are now chatting with your medical assistant. Try a query:
+Type `exit` to return to the host.
 
-```text
-What are the latest CDC guidelines for hypertension management?
-```
-
-To send a single message without the TUI:
-
-```bash
-openclaw agent --agent main --local -m "Summarize the latest PubMed research on GLP-1 agonists for type 2 diabetes" --session-id test
-```
-
-Type `exit` to leave the sandbox and return to the host.
-
-> **For advanced users:** Run `nemoclaw onboard --advanced` for the full setup wizard with custom providers, local inference (Ollama, vLLM), NIM containers, and granular policy control.
-
-### Uninstall
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash
-```
-
-| Flag | Effect |
-|------|--------|
-| `--yes` | Skip confirmation prompt |
-| `--keep-openshell` | Leave OpenShell binary installed |
-| `--delete-models` | Also remove Ollama models |
+> [!TIP]
+> For custom providers, local inference (Ollama, vLLM), or granular policy control, use
+> `nemoclaw onboard --advanced`.
 
 ---
 
 ## Pre-Approved Medical Resources
 
-Every MediClaw sandbox has access to these domains by default. No configuration needed.
+Every sandbox has access to these domains by default. No configuration needed.
 
 ### Research & Literature
 
@@ -192,7 +190,7 @@ Every MediClaw sandbox has access to these domains by default. No configuration 
 | `api.fda.gov` | FDA structured API |
 | `www.ahajournals.org` | AHA/ACC cardiology guidelines |
 
-### Government APIs (Free)
+### Government APIs
 
 | Domain | Description |
 |--------|-------------|
@@ -211,52 +209,60 @@ Every MediClaw sandbox has access to these domains by default. No configuration 
 | `browser.ihtsdotools.org` | SNOMED CT terminology browser |
 | `loinc.org` | LOINC lab/observation codes |
 
-Need more domains? Use `nemoclaw <name> policy-add` to apply additional presets, or edit the policy YAML directly.
+> [!TIP]
+> Need more domains? Run `nemoclaw <name> policy-add` to apply additional presets,
+> or edit the [policy YAML](nemoclaw-blueprint/policies/openclaw-sandbox.yaml) directly.
 
 ---
 
 ## Inference Providers
 
-Inference requests from the agent never leave the sandbox directly. OpenShell intercepts every call and routes it through the gateway to the upstream provider. The agent only sees `inference.local` — API keys are never exposed inside the sandbox.
+The agent never sees API keys or upstream endpoints. OpenShell intercepts every call at
+`inference.local` and routes it through the gateway.
 
 | Provider | Default Model | Notes |
 |----------|---------------|-------|
-| **OpenRouter** (default) | `deepseek/deepseek-v3.2` | Access to many models with one key |
+| **OpenRouter** (default) | `deepseek/deepseek-v3.2` | Many models, one key |
 | NVIDIA Endpoints | `nvidia/nemotron-3-super-120b-a12b` | Curated hosted models |
 | OpenAI | `gpt-5.4` | GPT models |
 | Anthropic | `claude-sonnet-4-6` | Claude models |
 | Google Gemini | `gemini-2.5-flash` | Gemini models |
-| Ollama (local) | auto-detected | Via `--advanced` onboard |
-| vLLM (local) | configurable | Via `--advanced` onboard (experimental) |
+| Ollama | auto-detected | Local inference via `--advanced` |
+| vLLM | configurable | Experimental, via `--advanced` |
 
 ---
 
-## Protection Layers
+## Security Model
 
-| Layer | What it protects | When it applies |
-|-------|------------------|-----------------|
-| **Network** | Blocks unauthorized outbound connections | Hot-reloadable at runtime |
-| **Filesystem** | Prevents reads/writes outside `/sandbox` and `/tmp` | Locked at sandbox creation |
-| **Process** | Blocks privilege escalation and dangerous syscalls | Locked at sandbox creation |
-| **Inference** | Reroutes model API calls to controlled backends | Hot-reloadable at runtime |
+```text
+┌─────────────────────────────────────┐
+│  Layer 1: NETWORK (Proxy + OPA)     │
+│  Deny-by-default egress             │
+│  30+ medical domains pre-approved   │
+│  Binary-restricted endpoint rules   │
+├─────────────────────────────────────┤
+│  Layer 2: FILESYSTEM (Landlock)     │
+│  /sandbox, /tmp → writable          │
+│  Everything else → blocked          │
+├─────────────────────────────────────┤
+│  Layer 3: PROCESS (seccomp + ns)    │
+│  Privilege escalation → blocked     │
+│  Network namespace isolation        │
+├─────────────────────────────────────┤
+│  Layer 4: INFERENCE (routing)       │
+│  All model calls → inference.local  │
+│  Auth injected at proxy, not agent  │
+└─────────────────────────────────────┘
+```
 
-When the agent tries to reach an unlisted host, OpenShell blocks the request and surfaces it in the TUI (`openshell term`) for operator approval.
+When the agent tries to reach an unlisted host, OpenShell blocks the request and surfaces it in the
+TUI (`openshell term`) for operator approval.
 
 ---
 
-## Configuring Sandbox Policy
+## Policy Presets
 
-The sandbox policy is defined in [`nemoclaw-blueprint/policies/openclaw-sandbox.yaml`](https://github.com/vidulpanickan/NemoClaw/blob/main/nemoclaw-blueprint/policies/openclaw-sandbox.yaml) and enforced by the OpenShell runtime.
-
-| Method | How | Scope |
-|--------|-----|-------|
-| **Presets** | `nemoclaw <name> policy-add` | Session only; apply from built-in presets |
-| **Static** | Edit `openclaw-sandbox.yaml` and re-run `nemoclaw onboard` | Persists across restarts |
-| **Dynamic** | `openshell policy set <policy-file>` on a running sandbox | Session only |
-
-### Available Presets
-
-MediClaw ships 14 policy presets in `nemoclaw-blueprint/policies/presets/`:
+MediClaw ships 14 policy presets in [`nemoclaw-blueprint/policies/presets/`](nemoclaw-blueprint/policies/presets/).
 
 | Preset | Description |
 |--------|-------------|
@@ -266,7 +272,7 @@ MediClaw ships 14 policy presets in `nemoclaw-blueprint/policies/presets/`:
 | `clinical-guidelines` | CDC, WHO, FDA, AHA Journals |
 | `medical-coding` | ICD, SNOMED CT, LOINC |
 | `medical-literature` | Google Scholar, Cochrane |
-| `npm` | npm and Yarn package registries |
+| `npm` | npm and Yarn registries |
 | `pypi` | Python package index |
 | `docker` | Docker Hub and NVIDIA container registry |
 | `huggingface` | Hugging Face Hub and inference API |
@@ -275,47 +281,78 @@ MediClaw ships 14 policy presets in `nemoclaw-blueprint/policies/presets/`:
 | `discord` | Discord API and webhooks |
 | `jira` | Atlassian/Jira Cloud API |
 
+Apply presets to a running sandbox:
+
+```bash
+nemoclaw medical-assistant policy-add
+```
+
+Or edit the base policy and re-run onboard:
+
+```bash
+# Edit nemoclaw-blueprint/policies/openclaw-sandbox.yaml
+nemoclaw onboard
+```
+
 ---
 
-## Key Commands
+## Command Reference
 
-### Host Commands
+### Host
 
 | Command | Description |
 |---------|-------------|
-| `nemoclaw onboard` | Simplified setup (3 prompts: provider, key, model) |
-| `nemoclaw onboard --advanced` | Full setup wizard (custom providers, endpoints) |
+| `nemoclaw onboard` | 3-prompt setup (provider, key, model) |
+| `nemoclaw onboard --advanced` | Full wizard with all options |
 | `nemoclaw list` | List all sandboxes |
-| `nemoclaw <name> connect` | Shell into the sandbox |
-| `nemoclaw <name> status` | Sandbox health and inference info |
-| `nemoclaw <name> logs [--follow]` | Stream sandbox logs |
-| `nemoclaw <name> policy-add` | Apply a network policy preset |
-| `nemoclaw <name> policy-list` | List presets (applied and available) |
-| `nemoclaw <name> destroy` | Stop and delete sandbox |
-| `openshell term` | Launch OpenShell TUI for monitoring |
+| `nemoclaw <name> connect` | Shell into sandbox |
+| `nemoclaw <name> status` | Health and inference info |
+| `nemoclaw <name> logs [--follow]` | Stream logs |
+| `nemoclaw <name> policy-add` | Apply a policy preset |
+| `nemoclaw <name> policy-list` | Show applied presets |
+| `nemoclaw <name> destroy` | Delete sandbox |
+| `openshell term` | Real-time monitoring TUI |
 
-### Inside the Sandbox
+### Sandbox
 
 | Command | Description |
 |---------|-------------|
-| `openclaw tui` | Interactive chat interface |
-| `openclaw agent --agent main --local -m "..." --session-id test` | Send a single message |
-| `exit` | Leave the sandbox |
+| `openclaw tui` | Interactive chat |
+| `openclaw agent --agent main --local -m "..." --session-id ID` | Single message |
+| `exit` | Leave sandbox |
 
-See the full [CLI reference](https://docs.nvidia.com/nemoclaw/latest/reference/commands.html) for all commands, flags, and options.
+---
+
+## Uninstall
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash
+```
+
+| Flag | Effect |
+|------|--------|
+| `--yes` | Skip confirmation |
+| `--keep-openshell` | Keep OpenShell binary |
+| `--delete-models` | Remove Ollama models |
 
 ---
 
 ## Learn More
 
-- [Overview](https://docs.nvidia.com/nemoclaw/latest/about/overview.html): What MediClaw does and how it fits together
-- [How It Works](https://docs.nvidia.com/nemoclaw/latest/about/how-it-works.html): Plugin, blueprint, and sandbox lifecycle
-- [Architecture](https://docs.nvidia.com/nemoclaw/latest/reference/architecture.html): Plugin structure, blueprint lifecycle, sandbox environment
-- [Network Policies](https://docs.nvidia.com/nemoclaw/latest/reference/network-policies.html): Egress control and policy customization
-- [CLI Commands](https://docs.nvidia.com/nemoclaw/latest/reference/commands.html): Full command reference
-- [Troubleshooting](https://docs.nvidia.com/nemoclaw/latest/reference/troubleshooting.html): Common issues and resolution steps
-- [Discord](https://discord.gg/XFpfPv9Uvx): Community for questions and discussion
+| Resource | Link |
+|----------|------|
+| Overview | [What MediClaw does](https://docs.nvidia.com/nemoclaw/latest/about/overview.html) |
+| How It Works | [Plugin, blueprint, sandbox lifecycle](https://docs.nvidia.com/nemoclaw/latest/about/how-it-works.html) |
+| Architecture | [Technical reference](https://docs.nvidia.com/nemoclaw/latest/reference/architecture.html) |
+| Network Policies | [Egress control](https://docs.nvidia.com/nemoclaw/latest/reference/network-policies.html) |
+| CLI Reference | [All commands](https://docs.nvidia.com/nemoclaw/latest/reference/commands.html) |
+| Troubleshooting | [Common issues](https://docs.nvidia.com/nemoclaw/latest/reference/troubleshooting.html) |
+| Community | [Discord](https://discord.gg/XFpfPv9Uvx) |
+
+---
 
 ## License
 
 This project is licensed under the [Apache License 2.0](LICENSE).
+
+Built on [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw) and [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
