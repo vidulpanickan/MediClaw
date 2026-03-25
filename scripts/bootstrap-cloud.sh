@@ -144,6 +144,20 @@ main() {
   install_docker
   verify_docker
   run_installer
+
+  # The installer adds nemoclaw to PATH via ~/.bashrc, but the current
+  # shell (from curl|bash) won't have it. Print a clear next-step message.
+  echo ""
+  echo "  ================================================"
+  echo "  IMPORTANT: Run this command to start using MediClaw:"
+  echo ""
+  echo "    source ~/.bashrc"
+  echo ""
+  echo "  Then connect to your sandbox:"
+  echo ""
+  echo "    nemoclaw medical-assistant connect"
+  echo "  ================================================"
+  echo ""
 }
 
 main "$@"
