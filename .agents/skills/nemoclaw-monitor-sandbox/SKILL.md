@@ -9,10 +9,10 @@ Inspect sandbox health, trace agent behavior, and diagnose problems.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
 
-Use the NemoClaw status, logs, and TUI tools together to inspect sandbox health, trace agent behavior, and diagnose problems.
+Use the MediClaw status, logs, and TUI tools together to inspect sandbox health, trace agent behavior, and diagnose problems.
 
 ## Step 1: Check Sandbox Health
 

@@ -1,7 +1,7 @@
-# How NemoClaw Works
+# How MediClaw Works
 
-NemoClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox.
-This page explains the key concepts about NemoClaw at a high level.
+MediClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox.
+This page explains the key concepts about MediClaw at a high level.
 
 ## How It Fits Together
 
@@ -49,7 +49,7 @@ flowchart TB
 
 ## Design Principles
 
-NemoClaw architecture follows the following principles.
+MediClaw architecture follows the following principles.
 
 Thin plugin, versioned blueprint
 : The plugin stays small and stable. Orchestration logic lives in the blueprint and evolves on its own release cadence.
@@ -61,7 +61,7 @@ Supply chain safety
 : Blueprint artifacts are immutable, versioned, and digest-verified before execution.
 
 OpenShell-native for new installs
-: For users without an existing OpenClaw installation, NemoClaw recommends `openshell sandbox create` directly
+: For users without an existing OpenClaw installation, MediClaw recommends `openshell sandbox create` directly
   rather than forcing a plugin-driven bootstrap.
 
 Reproducible setup
@@ -69,7 +69,7 @@ Reproducible setup
 
 ## Plugin and Blueprint
 
-NemoClaw is split into two parts:
+MediClaw is split into two parts:
 
 - The *plugin* is a TypeScript package that registers an inference provider and the `/nemoclaw` slash command inside the sandbox.
   It handles user interaction and delegates orchestration work to the blueprint.
@@ -80,7 +80,7 @@ This separation keeps the plugin small and stable while allowing the blueprint t
 
 ## Sandbox Creation
 
-When you run `nemoclaw onboard`, NemoClaw creates an OpenShell sandbox that runs OpenClaw in an isolated container.
+When you run `nemoclaw onboard`, MediClaw creates an OpenShell sandbox that runs OpenClaw in an isolated container.
 The blueprint orchestrates this process through the OpenShell CLI:
 
 1. The plugin downloads the blueprint artifact, checks version compatibility, and verifies the digest.
@@ -93,7 +93,7 @@ After the sandbox starts, the agent runs inside it with all network, filesystem,
 
 Inference requests from the agent never leave the sandbox directly.
 OpenShell intercepts every inference call and routes it to the configured provider.
-During onboarding, NemoClaw validates the selected provider and model, configures the OpenShell route, and bakes the matching model reference into the sandbox image.
+During onboarding, MediClaw validates the selected provider and model, configures the OpenShell route, and bakes the matching model reference into the sandbox image.
 The sandbox then talks to `inference.local`, while the host owns the actual provider credential and upstream endpoint.
 
 ## Network and Filesystem Policy

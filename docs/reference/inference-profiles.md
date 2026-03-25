@@ -1,9 +1,9 @@
 ---
 title:
-  page: "NemoClaw Inference Profiles"
+  page: "MediClaw Inference Profiles"
   nav: "Inference Profiles"
-description: "Configuration reference for NemoClaw routed inference providers."
-keywords: ["nemoclaw inference profiles", "nemoclaw provider routing"]
+description: "Configuration reference for MediClaw routed inference providers."
+keywords: ["mediclaw inference profiles", "mediclaw provider routing"]
 topics: ["generative_ai", "ai_agents"]
 tags: ["openclaw", "openshell", "inference_routing", "llms"]
 content:
@@ -20,15 +20,15 @@ status: published
 
 # Inference Profiles
 
-NemoClaw configures inference through the OpenShell gateway.
+MediClaw configures inference through the OpenShell gateway.
 The agent inside the sandbox talks to `inference.local`, and OpenShell routes that traffic to the provider you selected during onboarding.
 
 ## Routed Provider Model
 
-NemoClaw keeps provider credentials on the host.
+MediClaw keeps provider credentials on the host.
 The sandbox does not receive your raw OpenAI, Anthropic, Gemini, or NVIDIA API key.
 
-At onboard time, NemoClaw configures:
+At onboard time, MediClaw configures:
 
 - an OpenShell provider
 - an OpenShell inference route
@@ -51,16 +51,16 @@ The following non-experimental provider paths are available through `nemoclaw on
 
 ## Validation During Onboarding
 
-NemoClaw validates the selected provider and model before it creates the sandbox.
+MediClaw validates the selected provider and model before it creates the sandbox.
 
 - OpenAI-compatible providers:
-  NemoClaw tries `/responses` first, then `/chat/completions`.
+  MediClaw tries `/responses` first, then `/chat/completions`.
 - Anthropic-compatible providers:
-  NemoClaw tries `/v1/messages`.
+  MediClaw tries `/v1/messages`.
 - NVIDIA Endpoints manual model entry:
-  NemoClaw also validates the model name against `https://integrate.api.nvidia.com/v1/models`.
+  MediClaw also validates the model name against `https://integrate.api.nvidia.com/v1/models`.
 - Compatible endpoint flows:
-  NemoClaw validates by sending a real inference request, because many proxies do not expose a reliable `/models` endpoint.
+  MediClaw validates by sending a real inference request, because many proxies do not expose a reliable `/models` endpoint.
 
 If validation fails, the wizard does not continue to sandbox creation.
 
@@ -71,7 +71,7 @@ It uses the same routed `inference.local` pattern, but the upstream runtime runs
 
 Ollama gets additional onboarding help:
 
-- if no models are installed, NemoClaw offers starter models
+- if no models are installed, MediClaw offers starter models
 - it pulls the selected model
 - it warms the model
 - it validates the model before continuing

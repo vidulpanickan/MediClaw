@@ -9,7 +9,7 @@ Change the active inference model without restarting the sandbox.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
 
 Change the active inference model while the sandbox is running.

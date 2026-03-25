@@ -1,9 +1,9 @@
 ---
 title:
-  page: "Switch NemoClaw Inference Models at Runtime"
+  page: "Switch MediClaw Inference Models at Runtime"
   nav: "Switch Inference Models"
 description: "Change the active inference model without restarting the sandbox."
-keywords: ["switch nemoclaw inference model", "change inference runtime"]
+keywords: ["switch mediclaw inference model", "change inference runtime"]
 topics: ["generative_ai", "ai_agents"]
 tags: ["openclaw", "openshell", "inference_routing"]
 content:
@@ -25,7 +25,7 @@ No restart is required.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
 
 ## Switch to a Different Model

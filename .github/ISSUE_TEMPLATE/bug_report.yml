@@ -31,7 +31,7 @@ body:
         - OS: macOS 15.2 / Ubuntu 24.04 / Windows 11 + WSL2
         - Node.js: v20.x
         - Docker: Docker Desktop 4.x / Docker Engine 27.x
-        - NemoClaw: v0.x.x (output of `nemoclaw --version`)
+        - MediClaw: v0.x.x (output of `nemoclaw --version`)
     validations:
       required: true
 

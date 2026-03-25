@@ -1,4 +1,4 @@
-# NemoClaw on DGX Spark
+# MediClaw on DGX Spark
 
 > **WIP** — This page is actively being updated as we work through Spark installs. Expect changes.
 
@@ -15,14 +15,14 @@
 # Install OpenShell:
 curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh
 
-# Clone NemoClaw:
-git clone https://github.com/NVIDIA/NemoClaw.git
+# Clone MediClaw:
+git clone https://github.com/vidulpanickan/NemoClaw.git
 cd NemoClaw
 
 # Spark-specific setup (For details see [What's Different on Spark](#whats-different-on-spark))
 sudo ./scripts/setup-spark.sh
 
-# Install NemoClaw using the NemoClaw/install.sh:
+# Install MediClaw using the NemoClaw/install.sh:
 ./install.sh
 
 # Alternatively, you can use the hosted install script:
@@ -42,7 +42,7 @@ openclaw agent --agent main --local -m "hello" --session-id test
 ## Uninstall (perform this before re-installing)
 
 ```bash
-# Uninstall NemoClaw (Remove OpenShell sandboxes, gateway, NemoClaw providers, related Docker containers, images, volumes and configs)
+# Uninstall MediClaw (Remove OpenShell sandboxes, gateway, MediClaw providers, related Docker containers, images, volumes and configs)
 nemoclaw uninstall
 ```
 
@@ -110,13 +110,13 @@ Verify Ollama is listening on all interfaces:
 sudo ss -tlnp | grep 11434
 ```
 
-### Install OpenShell and NemoClaw
+### Install OpenShell and MediClaw
 
 ```bash
-# If the OpenShell and NemoClaw are already installed, uninstall them. A fresh NemoClaw install will run onboard with local inference options.
+# If the OpenShell and MediClaw are already installed, uninstall them. A fresh MediClaw install will run onboard with local inference options.
 nemoclaw uninstall
 
-# Install OpenShell and NemoClaw
+# Install OpenShell and MediClaw
 curl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh
 curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash
 ```
@@ -216,6 +216,6 @@ DGX Spark (Ubuntu 24.04, cgroup v2)
   └── Docker (28.x, cgroupns=host)
        └── OpenShell gateway container
             └── k3s (embedded)
-                 └── nemoclaw sandbox pod
-                      └── OpenClaw agent + NemoClaw plugin
+                 └── mediclaw sandbox pod
+                      └── OpenClaw agent + MediClaw plugin
 ```

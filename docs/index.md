@@ -2,10 +2,10 @@
 title:
   page: "MediClaw Developer Guide"
   nav: "MediClaw"
-description: "NemoClaw is an open source reference stack that simplifies running OpenClaw always-on assistants more safely, with a single command."
-keywords: ["nemoclaw open source reference stack", "openclaw always-on assistants", "nvidia openshell", "nvidia nemotron"]
+description: "MediClaw is an open source reference stack that simplifies running OpenClaw always-on assistants more safely, with a single command."
+keywords: ["mediclaw open source reference stack", "openclaw always-on assistants", "nvidia openshell", "nvidia nemotron"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "sandboxing", "inference_routing", "nemoclaw"]
+tags: ["openclaw", "openshell", "sandboxing", "inference_routing", "mediclaw"]
 content:
   type: get_started
   difficulty: technical_beginner
@@ -28,7 +28,7 @@ status: published
 ```{include} _includes/alpha-statement.md
 ```
 
-NVIDIA NemoClaw is an open source reference stack that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants more safely.
+MediClaw is an open source reference stack that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants more safely.
 It installs the [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) runtime, part of NVIDIA Agent Toolkit, an environment designed for executing claws with additional security, and open source models like [NVIDIA Nemotron](https://build.nvidia.com).
 
 ## Get Started
@@ -85,7 +85,7 @@ Install the CLI and launch a sandboxed OpenClaw instance in a few commands.
 ```
 
 Run `nemoclaw --help` in your terminal to view the full CLI reference.
-You can also clone the [NemoClaw repository](https://github.com/NVIDIA/NemoClaw) to explore the plugin source and blueprint.
+You can also clone the [MediClaw repository](https://github.com/vidulpanickan/NemoClaw) to explore the plugin source and blueprint.
 
 Proceed to the [Quickstart](get-started/quickstart.md) for step-by-step instructions.
 
@@ -96,11 +96,11 @@ Proceed to the [Quickstart](get-started/quickstart.md) for step-by-step instruct
 ::::{grid} 2 2 3 3
 :gutter: 3
 
-:::{grid-item-card} About NemoClaw
+:::{grid-item-card} About MediClaw
 :link: about/overview
 :link-type: doc
 
-Learn what NemoClaw does and how it integrates OpenClaw with OpenShell.
+Learn what MediClaw does and how it integrates OpenClaw with OpenShell.
 
 +++
 {bdg-secondary}`Concept`
@@ -195,7 +195,7 @@ Home <self>
 ```
 
 ```{toctree}
-:caption: About NemoClaw
+:caption: About MediClaw
 :hidden:
 
 Overview <about/overview>

@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 #
-# Collect NemoClaw diagnostic information for bug reports.
+# Collect MediClaw diagnostic information for bug reports.
 #
 # Outputs to stdout and optionally writes a tarball.
 #
@@ -14,7 +14,7 @@
 #   nemoclaw debug [--quick] [--output path]    # via CLI wrapper
 #
 # Can also be run without cloning:
-#   curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/main/scripts/debug.sh | bash -s -- --quick
+#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/debug.sh | bash -s -- --quick
 
 set -euo pipefail
 
@@ -58,7 +58,7 @@ while [ $# -gt 0 ]; do
       cat <<'USAGE'
 Usage: scripts/debug.sh [OPTIONS]
 
-Collect NemoClaw diagnostic information for bug reports.
+Collect MediClaw diagnostic information for bug reports.
 
 Options:
   --sandbox NAME    Target sandbox (default: $NEMOCLAW_SANDBOX or auto-detect)
@@ -70,7 +70,7 @@ Examples:
   nemoclaw debug
   nemoclaw debug --quick
   nemoclaw debug --output /tmp/diag.tar.gz
-  curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/main/scripts/debug.sh | bash -s -- --quick
+  curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/debug.sh | bash -s -- --quick
 USAGE
       exit 0
       ;;
@@ -223,7 +223,7 @@ if [ "$QUICK" = false ]; then
   collect "docker-df" docker system df
 fi
 
-# Collect logs for NemoClaw-related containers
+# Collect logs for MediClaw-related containers
 for cid in $(docker ps -a --filter "label=com.nvidia.nemoclaw" --format '{{.Names}}' 2>/dev/null || true); do
   collect "docker-logs-${cid}" docker logs --tail 200 "$cid"
   if [ "$QUICK" = false ]; then

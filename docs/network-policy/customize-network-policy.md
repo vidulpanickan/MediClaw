@@ -1,11 +1,11 @@
 ---
 title:
-  page: "Customize the NemoClaw Sandbox Network Policy"
+  page: "Customize the MediClaw Sandbox Network Policy"
   nav: "Customize Network Policy"
 description: "Add, remove, or modify allowed endpoints in the sandbox policy."
-keywords: ["customize nemoclaw network policy", "sandbox egress policy configuration"]
+keywords: ["customize mediclaw network policy", "sandbox egress policy configuration"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "network_policy", "security", "nemoclaw"]
+tags: ["openclaw", "openshell", "network_policy", "security", "mediclaw"]
 content:
   type: how_to
   difficulty: intermediate
@@ -22,12 +22,12 @@ status: published
 
 Add, remove, or modify the endpoints that the sandbox is allowed to reach.
 
-The sandbox policy is defined in a declarative YAML file in the NemoClaw repository and enforced at runtime by [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
-NemoClaw supports both static policy changes that persist across restarts and dynamic updates applied to a running sandbox through the OpenShell CLI.
+The sandbox policy is defined in a declarative YAML file in the MediClaw repository and enforced at runtime by [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
+MediClaw supports both static policy changes that persist across restarts and dynamic updates applied to a running sandbox through the OpenShell CLI.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox for dynamic changes, or the NemoClaw source repository for static changes.
+- A running MediClaw sandbox for dynamic changes, or the MediClaw source repository for static changes.
 - The OpenShell CLI on your `PATH`.
 
 ## Static Changes
@@ -94,7 +94,7 @@ To make changes permanent, update the static policy file and re-run setup.
 
 ## Policy Presets
 
-NemoClaw ships preset policy files for common integrations in `nemoclaw-blueprint/policies/presets/`.
+MediClaw ships preset policy files for common integrations in `nemoclaw-blueprint/policies/presets/`.
 Apply a preset as-is or use it as a starting template for a custom policy.
 
 Available presets:

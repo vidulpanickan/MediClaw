@@ -4,7 +4,7 @@
 [project]
 name = "nemoclaw-docs"
 version = "0.1.0"
-description = "Documentation build for NemoClaw"
+description = "Documentation build for MediClaw"
 requires-python = ">=3.11"
 
 [dependency-groups]

@@ -1,11 +1,11 @@
 ---
 title:
-  page: "NemoClaw Release Notes"
+  page: "MediClaw Release Notes"
   nav: "Release Notes"
-description: "Changelog and feature history for NemoClaw releases."
-keywords: ["nemoclaw release notes", "nemoclaw changelog"]
+description: "Changelog and feature history for MediClaw releases."
+keywords: ["mediclaw release notes", "mediclaw changelog"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["nemoclaw", "releases"]
+tags: ["mediclaw", "releases"]
 content:
   type: reference
   difficulty: technical_beginner
@@ -23,11 +23,11 @@ status: published
 ```{include} ../_includes/alpha-statement.md
 ```
 
-NVIDIA NemoClaw is available in early preview starting March 16, 2026. Use the following GitHub resources to track changes.
+MediClaw is available in early preview starting March 16, 2026. Use the following GitHub resources to track changes.
 
 | Resource | Description |
 |---|---|
-| [Releases](https://github.com/NVIDIA/NemoClaw/releases) | Versioned release notes and downloadable assets. |
-| [Release comparison](https://github.com/NVIDIA/NemoClaw/compare) | Diff between any two tags or branches. |
-| [Merged pull requests](https://github.com/NVIDIA/NemoClaw/pulls?q=is%3Apr+is%3Amerged) | Individual changes with review discussion. |
-| [Commit history](https://github.com/NVIDIA/NemoClaw/commits/main) | Full commit log on `main`. |
+| [Releases](https://github.com/vidulpanickan/NemoClaw/releases) | Versioned release notes and downloadable assets. |
+| [Release comparison](https://github.com/vidulpanickan/NemoClaw/compare) | Diff between any two tags or branches. |
+| [Merged pull requests](https://github.com/vidulpanickan/NemoClaw/pulls?q=is%3Apr+is%3Amerged) | Individual changes with review discussion. |
+| [Commit history](https://github.com/vidulpanickan/NemoClaw/commits/main) | Full commit log on `main`. |

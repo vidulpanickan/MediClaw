@@ -1,6 +1,6 @@
-# Contributing to NVIDIA NemoClaw
+# Contributing to MediClaw
 
-Thank you for your interest in contributing to NVIDIA NemoClaw. This guide covers how to set up your development environment, run tests, and submit changes.
+Thank you for your interest in contributing to MediClaw. This guide covers how to set up your development environment, run tests, and submit changes.
 
 ## Before You Open an Issue
 

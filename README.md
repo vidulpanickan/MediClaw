@@ -16,7 +16,7 @@ It also includes open source models such as [NVIDIA Nemotron](https://build.nvid
 
 > **Alpha software**
 >
-> NemoClaw is available in early preview starting March 16, 2026.
+> MediClaw is available in early preview starting March 16, 2026.
 > This software is not production-ready.
 > Interfaces, APIs, and behavior may change without notice as we iterate on the design.
 > The project is shared to gather feedback and enable early experimentation.
@@ -26,17 +26,17 @@ It also includes open source models such as [NVIDIA Nemotron](https://build.nvid
 
 ## Quick Start
 
-Follow these steps to get started with NemoClaw and your first sandboxed OpenClaw agent.
+Follow these steps to get started with MediClaw and your first sandboxed OpenClaw agent.
 
 > **ℹ️ Note**
 >
-> NemoClaw creates a fresh OpenClaw instance inside the sandbox during onboarding.
+> MediClaw creates a fresh OpenClaw instance inside the sandbox during onboarding.
 
 <!-- start-quickstart-guide -->
 
 ### Prerequisites
 
-Check the prerequisites before you start to ensure you have the necessary software and hardware to run NemoClaw.
+Check the prerequisites before you start to ensure you have the necessary software and hardware to run MediClaw.
 
 #### Hardware
 
@@ -64,14 +64,14 @@ The sandbox image is approximately 2.4 GB compressed. During image push, the Doc
 |----------|--------------------|-------|
 | Linux | Docker | Primary supported path today |
 | macOS (Apple Silicon) | Colima, Docker Desktop | Recommended runtimes for supported macOS setups |
-| macOS | Podman | Not supported yet. NemoClaw currently depends on OpenShell support for Podman on macOS. |
+| macOS | Podman | Not supported yet. MediClaw currently depends on OpenShell support for Podman on macOS. |
 | Windows WSL | Docker Desktop (WSL backend) | Supported target path |
 
 > **💡 Tip**
 >
-> For DGX Spark, follow the [DGX Spark setup guide](https://github.com/NVIDIA/NemoClaw/blob/main/spark-install.md). It covers Spark-specific prerequisites, such as cgroup v2 and Docker configuration, before running the standard installer.
+> For DGX Spark, follow the [DGX Spark setup guide](https://github.com/vidulpanickan/NemoClaw/blob/main/spark-install.md). It covers Spark-specific prerequisites, such as cgroup v2 and Docker configuration, before running the standard installer.
 
-### Install NemoClaw and Onboard OpenClaw Agent
+### Install MediClaw and Onboard OpenClaw Agent
 
 Download and run the installer script.
 The script installs Node.js if it is not already present, then runs the guided onboard wizard to create a sandbox, configure inference, and apply security policies.
@@ -138,24 +138,24 @@ This prints the complete response directly in the terminal and avoids relying on
 
 ### Uninstall
 
-To remove NemoClaw and all resources created during setup, in the terminal outside the sandbox, run:
+To remove MediClaw and all resources created during setup, in the terminal outside the sandbox, run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash
 ```
 
-The script removes sandboxes, the NemoClaw gateway and providers, related Docker images and containers, local state directories, and the global `nemoclaw` npm package. It does not remove shared system tooling such as Docker, Node.js, npm, or Ollama.
+The script removes sandboxes, the MediClaw gateway and providers, related Docker images and containers, local state directories, and the global `nemoclaw` npm package. It does not remove shared system tooling such as Docker, Node.js, npm, or Ollama.
 
 | Flag               | Effect                                              |
 |--------------------|-----------------------------------------------------|
 | `--yes`            | Skip the confirmation prompt.                       |
 | `--keep-openshell` | Leave the `openshell` binary installed.              |
-| `--delete-models`  | Also remove NemoClaw-pulled Ollama models.           |
+| `--delete-models`  | Also remove MediClaw-pulled Ollama models.           |
 
 For example, to skip the confirmation prompt:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uninstall.sh | bash -s -- --yes
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash -s -- --yes
 ```
 
 <!-- end-quickstart-guide -->
@@ -164,7 +164,7 @@ curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uni
 
 ## How It Works
 
-NemoClaw installs the NVIDIA OpenShell runtime, then creates a sandboxed OpenClaw environment where every network request, file access, and inference call is governed by declarative policy. The `nemoclaw` CLI orchestrates the full stack: OpenShell gateway, sandbox, inference provider, and network policy.
+MediClaw installs the NVIDIA OpenShell runtime, then creates a sandboxed OpenClaw environment where every network request, file access, and inference call is governed by declarative policy. The `nemoclaw` CLI orchestrates the full stack: OpenShell gateway, sandbox, inference provider, and network policy.
 
 | Component        | Role                                                                                      |
 |------------------|-------------------------------------------------------------------------------------------|
@@ -175,7 +175,7 @@ NemoClaw installs the NVIDIA OpenShell runtime, then creates a sandboxed OpenCla
 
 The blueprint lifecycle follows four stages: resolve the artifact, verify its digest, plan the resources, and apply through the OpenShell CLI.
 
-When something goes wrong, errors may originate from either NemoClaw or the OpenShell layer underneath. Run `nemoclaw <name> status` for NemoClaw-level health and `openshell sandbox list` to check the underlying sandbox state.
+When something goes wrong, errors may originate from either MediClaw or the OpenShell layer underneath. Run `nemoclaw <name> status` for MediClaw-level health and `openshell sandbox list` to check the underlying sandbox state.
 
 ---
 
@@ -194,7 +194,7 @@ Supported non-experimental onboarding paths:
 | Other Anthropic-compatible endpoint | For Claude proxies and compatible gateways. |
 | Google Gemini | Google's OpenAI-compatible endpoint. |
 
-During onboarding, NemoClaw validates the selected provider and model before it creates the sandbox:
+During onboarding, MediClaw validates the selected provider and model before it creates the sandbox:
 
 - OpenAI-compatible providers: tries `/responses` first, then `/chat/completions`
 - Anthropic-compatible providers: tries `/v1/messages`
@@ -224,7 +224,7 @@ When the agent tries to reach an unlisted host, OpenShell blocks the request and
 ## Configuring Sandbox Policy
 
 The sandbox policy is defined in a declarative YAML file and enforced by the OpenShell runtime.
-NemoClaw ships a default policy in [`nemoclaw-blueprint/policies/openclaw-sandbox.yaml`](https://github.com/NVIDIA/NemoClaw/blob/main/nemoclaw-blueprint/policies/openclaw-sandbox.yaml) that denies all network egress except explicitly listed endpoints.
+MediClaw ships a default policy in [`nemoclaw-blueprint/policies/openclaw-sandbox.yaml`](https://github.com/vidulpanickan/NemoClaw/blob/main/nemoclaw-blueprint/policies/openclaw-sandbox.yaml) that denies all network egress except explicitly listed endpoints.
 
 Operators can customize the policy in two ways:
 
@@ -233,9 +233,9 @@ Operators can customize the policy in two ways:
 | **Static** | Edit `openclaw-sandbox.yaml` and re-run `nemoclaw onboard`. | Persists across restarts. |
 | **Dynamic** | Run `openshell policy set <policy-file>` on a running sandbox. | Session only; resets on restart. |
 
-NemoClaw includes preset policy files for common integrations such as PyPI, Docker Hub, Slack, and Jira in `nemoclaw-blueprint/policies/presets/`. Apply a preset as-is or use it as a starting template.
+MediClaw includes preset policy files for common integrations such as PyPI, Docker Hub, Slack, and Jira in `nemoclaw-blueprint/policies/presets/`. Apply a preset as-is or use it as a starting template.
 
-NemoClaw is an open project — we are still determining which presets to ship by default. If you have suggestions, please open an [issue](https://github.com/NVIDIA/NemoClaw/issues) or [discussion](https://github.com/NVIDIA/NemoClaw/discussions).
+MediClaw is an open project — we are still determining which presets to ship by default. If you have suggestions, please open an [issue](https://github.com/vidulpanickan/NemoClaw/issues) or [discussion](https://github.com/vidulpanickan/NemoClaw/discussions).
 
 When the agent attempts to reach an endpoint not covered by the policy, OpenShell blocks the request and surfaces it in the TUI (`openshell term`) for the operator to approve or deny in real time. Approved endpoints persist for the current session only.
 
@@ -262,12 +262,12 @@ See the full [CLI reference](https://docs.nvidia.com/nemoclaw/latest/reference/c
 
 ## Learn More
 
-Refer to the documentation for more information on NemoClaw.
+Refer to the documentation for more information on MediClaw.
 
-- [Overview](https://docs.nvidia.com/nemoclaw/latest/about/overview.html): Learn what NemoClaw does and how it fits together.
+- [Overview](https://docs.nvidia.com/nemoclaw/latest/about/overview.html): Learn what MediClaw does and how it fits together.
 - [How It Works](https://docs.nvidia.com/nemoclaw/latest/about/how-it-works.html): Learn about the plugin, blueprint, and sandbox lifecycle.
 - [Architecture](https://docs.nvidia.com/nemoclaw/latest/reference/architecture.html): Learn about the plugin structure, blueprint lifecycle, and sandbox environment.
-- [Inference Profiles](https://docs.nvidia.com/nemoclaw/latest/reference/inference-profiles.html): Learn how NemoClaw configures routed inference providers.
+- [Inference Profiles](https://docs.nvidia.com/nemoclaw/latest/reference/inference-profiles.html): Learn how MediClaw configures routed inference providers.
 - [Network Policies](https://docs.nvidia.com/nemoclaw/latest/reference/network-policies.html): Learn about egress control and policy customization.
 - [CLI Commands](https://docs.nvidia.com/nemoclaw/latest/reference/commands.html): Learn about the full command reference.
 - [Troubleshooting](https://docs.nvidia.com/nemoclaw/latest/reference/troubleshooting.html): Troubleshoot common issues and resolution steps.

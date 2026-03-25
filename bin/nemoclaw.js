@@ -39,7 +39,7 @@ const GLOBAL_COMMANDS = new Set([
   "help", "--help", "-h", "--version", "-v",
 ]);
 
-const REMOTE_UNINSTALL_URL = "https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uninstall.sh";
+const REMOTE_UNINSTALL_URL = "https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh";
 
 function resolveUninstallScript() {
   const candidates = [
@@ -120,7 +120,7 @@ async function deploy(instanceName) {
   const gpu = process.env.NEMOCLAW_GPU || "a2-highgpu-1g:nvidia-tesla-a100:1";
 
   console.log("");
-  console.log(`  Deploying NemoClaw to Brev instance: ${name}`);
+  console.log(`  Deploying MediClaw to Brev instance: ${name}`);
   console.log("");
 
   try {
@@ -165,7 +165,7 @@ async function deploy(instanceName) {
     }
   }
 
-  console.log("  Syncing NemoClaw to VM...");
+  console.log("  Syncing MediClaw to VM...");
   run(`ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR ${qname} 'mkdir -p /home/ubuntu/nemoclaw'`);
   run(`rsync -az --delete --exclude node_modules --exclude .git --exclude src -e "ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR" "${ROOT}/scripts" "${ROOT}/Dockerfile" "${ROOT}/nemoclaw" "${ROOT}/nemoclaw-blueprint" "${ROOT}/bin" "${ROOT}/package.json" ${qname}:/home/ubuntu/nemoclaw/`);
 
@@ -397,7 +397,7 @@ async function sandboxDestroy(sandboxName, args = []) {
 function help() {
   const pkg = require(path.join(__dirname, "..", "package.json"));
   console.log(`
-  ${B}${G}NemoClaw${R}  ${D}v${pkg.version}${R}
+  ${B}${G}MediClaw${R}  ${D}v${pkg.version}${R}
   ${D}Deploy more secure, always-on AI assistants with a single command.${R}
 
   ${G}Getting Started:${R}
@@ -433,11 +433,11 @@ function help() {
   ${G}Uninstall flags:${R}
     --yes                            Skip the confirmation prompt
     --keep-openshell                 Leave the openshell binary installed
-    --delete-models                  Remove NemoClaw-pulled Ollama models
+    --delete-models                  Remove MediClaw-pulled Ollama models
 
   ${D}Powered by NVIDIA OpenShell · Nemotron · Agent Toolkit
   Credentials saved in ~/.nemoclaw/credentials.json (mode 600)${R}
-  ${D}https://www.nvidia.com/nemoclaw${R}
+  ${D}https://github.com/vidulpanickan/NemoClaw${R}
 `);
 }
 

@@ -1,16 +1,16 @@
 ---
 name: nemoclaw-reference
-description: Learns how NemoClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox. Also covers fulls CLI reference for plugin and standalone NemoClaw commands; configurations reference for NemoClaw routed inference providers. Use when blueprints, cli, inference routing, llms, nemoclaw, nemoclaw architecture, nemoclaw architecture plugin blueprint, nemoclaw cli commands.
+description: Learns how MediClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox. Also covers fulls CLI reference for plugin and standalone MediClaw commands; configurations reference for MediClaw routed inference providers. Use when blueprints, cli, inference routing, llms, nemoclaw, nemoclaw architecture, nemoclaw architecture plugin blueprint, nemoclaw cli commands.
 ---
 
 # Nemoclaw Reference
 
-Learn how NemoClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox.
+Learn how MediClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox.
 
 ## Reference
 
-- [NemoClaw Architecture — Plugin, Blueprint, and Sandbox Structure](references/architecture.md)
-- [NemoClaw CLI Commands Reference](references/commands.md)
-- [NemoClaw Inference Profiles](references/inference-profiles.md)
-- [NemoClaw Network Policies — Baseline Rules and Operator Approval](references/network-policies.md)
-- [NemoClaw Troubleshooting Guide](references/troubleshooting.md)
+- [MediClaw Architecture — Plugin, Blueprint, and Sandbox Structure](references/architecture.md)
+- [MediClaw CLI Commands Reference](references/commands.md)
+- [MediClaw Inference Profiles](references/inference-profiles.md)
+- [MediClaw Network Policies — Baseline Rules and Operator Approval](references/network-policies.md)
+- [MediClaw Troubleshooting Guide](references/troubleshooting.md)

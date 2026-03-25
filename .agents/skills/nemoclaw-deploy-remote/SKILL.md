@@ -1,28 +1,28 @@
 ---
 name: nemoclaw-deploy-remote
-description: Provisions a remote GPU VM with NemoClaw using Brev deployment. Also covers forwards messages between Telegram and the sandboxed OpenClaw agent. Use when deploy nemoclaw remote gpu, deployment, gpu, nemoclaw, nemoclaw brev cloud deployment, nemoclaw telegram bridge, openclaw, openshell.
+description: Provisions a remote GPU VM with MediClaw using Brev deployment. Also covers forwards messages between Telegram and the sandboxed OpenClaw agent. Use when deploy nemoclaw remote gpu, deployment, gpu, nemoclaw, nemoclaw brev cloud deployment, nemoclaw telegram bridge, openclaw, openshell.
 ---
 
 # Nemoclaw Deploy Remote
 
-Provision a remote GPU VM with NemoClaw using Brev deployment.
+Provision a remote GPU VM with MediClaw using Brev deployment.
 
 ## Prerequisites
 
 - The [Brev CLI](https://brev.nvidia.com) installed and authenticated.
 - An NVIDIA API key from [build.nvidia.com](https://build.nvidia.com).
-- NemoClaw installed locally. Follow the Quickstart (see the `nemoclaw-get-started` skill) install steps.
-- A running NemoClaw sandbox, either local or remote.
+- MediClaw installed locally. Follow the Quickstart (see the `nemoclaw-get-started` skill) install steps.
+- A running MediClaw sandbox, either local or remote.
 - A Telegram bot token from [BotFather](https://t.me/BotFather).
 
-Run NemoClaw on a remote GPU instance through [Brev](https://brev.nvidia.com).
+Run MediClaw on a remote GPU instance through [Brev](https://brev.nvidia.com).
 The deploy command provisions the VM, installs dependencies, and connects you to a running sandbox.
 
 ## Step 1: Deploy the Instance
 
 > **Warning:** The `nemoclaw deploy` command is experimental and may not work as expected.
 
-Create a Brev instance and run the NemoClaw setup:
+Create a Brev instance and run the MediClaw setup:
 
 ```console
 $ nemoclaw deploy <instance-name>

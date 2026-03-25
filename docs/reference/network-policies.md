@@ -1,9 +1,9 @@
 ---
 title:
-  page: "NemoClaw Network Policies — Baseline Rules and Operator Approval"
+  page: "MediClaw Network Policies — Baseline Rules and Operator Approval"
   nav: "Network Policies"
 description: "Baseline network policy, filesystem rules, and operator approval flow."
-keywords: ["nemoclaw network policy", "sandbox egress control operator approval"]
+keywords: ["mediclaw network policy", "sandbox egress control operator approval"]
 topics: ["generative_ai", "ai_agents"]
 tags: ["openclaw", "openshell", "sandboxing", "network_policy", "security"]
 content:
@@ -20,7 +20,7 @@ status: published
 
 # Network Policies
 
-NemoClaw runs with a deny-by-default network policy.
+MediClaw runs with a deny-by-default network policy.
 The sandbox can only reach endpoints that are explicitly allowed.
 Any request to an unlisted destination is intercepted by OpenShell, and the operator is prompted to approve or deny it in real time through the TUI.
 

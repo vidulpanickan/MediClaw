@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 #
-# NemoClaw installer — installs Node.js, Ollama (if GPU present), and NemoClaw.
+# MediClaw installer — installs Node.js, Ollama (if GPU present), and NemoClaw.
 
 set -euo pipefail
 
@@ -86,12 +86,12 @@ step() {
 print_banner() {
   printf "\n"
   # ANSI Shadow ASCII art — hand-crafted, no figlet dependency
-  printf "  ${C_GREEN}${C_BOLD} ███╗   ██╗███████╗███╗   ███╗ ██████╗  ██████╗██╗      █████╗ ██╗    ██╗${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ████╗  ██║██╔════╝████╗ ████║██╔═══██╗██╔════╝██║     ██╔══██╗██║    ██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██╔██╗ ██║█████╗  ██╔████╔██║██║   ██║██║     ██║     ███████║██║ █╗ ██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██║╚██╗██║██╔══╝  ██║╚██╔╝██║██║   ██║██║     ██║     ██╔══██║██║███╗██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██║ ╚████║███████╗██║ ╚═╝ ██║╚██████╔╝╚██████╗███████╗██║  ██║╚███╔███╔╝${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ███╗   ███╗███████╗██████╗ ██╗ ██████╗██╗      █████╗ ██╗    ██╗${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ████╗ ████║██╔════╝██╔══██╗██║██╔════╝██║     ██╔══██╗██║    ██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██╔████╔██║█████╗  ██║  ██║██║██║     ██║     ███████║██║ █╗ ██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██║╚██╔╝██║██╔══╝  ██║  ██║██║██║     ██║     ██╔══██║██║███╗██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██║ ╚═╝ ██║███████╗██████╔╝██║╚██████╗███████╗██║  ██║╚███╔███╔╝${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝${C_RESET}\n"
   printf "\n"
   printf "  ${C_DIM}Launch OpenClaw in an OpenShell sandbox.  v%s${C_RESET}\n" "$NEMOCLAW_VERSION"
   printf "\n"
@@ -103,7 +103,7 @@ print_done() {
   sandbox_name="$(resolve_default_sandbox_name)"
   info "=== Installation complete ==="
   printf "\n"
-  printf "  ${C_GREEN}${C_BOLD}NemoClaw${C_RESET}  ${C_DIM}(%ss)${C_RESET}\n" "$elapsed"
+  printf "  ${C_GREEN}${C_BOLD}MediClaw${C_RESET}  ${C_DIM}(%ss)${C_RESET}\n" "$elapsed"
   printf "\n"
   printf "  ${C_GREEN}Your OpenClaw Sandbox is live.${C_RESET}\n"
   printf "  ${C_DIM}Sandbox in, break things, and tell us what you find.${C_RESET}\n"
@@ -112,14 +112,14 @@ print_done() {
   printf "  %s$%s nemoclaw %s connect\n" "$C_GREEN" "$C_RESET" "$sandbox_name"
   printf "  %ssandbox@%s$%s openclaw tui\n" "$C_GREEN" "$sandbox_name" "$C_RESET"
   printf "\n"
-  printf "  ${C_BOLD}GitHub${C_RESET}  ${C_DIM}https://github.com/nvidia/nemoclaw${C_RESET}\n"
-  printf "  ${C_BOLD}Docs${C_RESET}    ${C_DIM}https://docs.nvidia.com/nemoclaw/latest/${C_RESET}\n"
+  printf "  ${C_BOLD}GitHub${C_RESET}  ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
+  printf "  ${C_BOLD}Docs${C_RESET}    ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
   printf "\n"
 }
 
 usage() {
   printf "\n"
-  printf "  ${C_BOLD}NemoClaw Installer${C_RESET}  ${C_DIM}v%s${C_RESET}\n\n" "$NEMOCLAW_VERSION"
+  printf "  ${C_BOLD}MediClaw Installer${C_RESET}  ${C_DIM}v%s${C_RESET}\n\n" "$NEMOCLAW_VERSION"
   printf "  ${C_DIM}Usage:${C_RESET}\n"
   printf "    curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash\n"
   printf "    curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash -s -- [options]\n\n"
@@ -190,7 +190,7 @@ command_exists() { command -v "$1" &>/dev/null; }
 MIN_NODE_MAJOR=20
 MIN_NPM_MAJOR=10
 RECOMMENDED_NODE_MAJOR=22
-RUNTIME_REQUIREMENT_MSG="NemoClaw requires Node.js >=${MIN_NODE_MAJOR} and npm >=${MIN_NPM_MAJOR} (recommended Node.js ${RECOMMENDED_NODE_MAJOR})."
+RUNTIME_REQUIREMENT_MSG="MediClaw requires Node.js >=${MIN_NODE_MAJOR} and npm >=${MIN_NPM_MAJOR} (recommended Node.js ${RECOMMENDED_NODE_MAJOR})."
 NEMOCLAW_SHIM_DIR="${HOME}/.local/bin"
 ORIGINAL_PATH="${PATH:-}"
 
@@ -445,26 +445,26 @@ pre_extract_openclaw() {
 
 install_nemoclaw() {
   if [[ -f "./package.json" ]] && grep -q '"name": "nemoclaw"' ./package.json 2>/dev/null; then
-    info "NemoClaw package.json found in current directory — installing from source…"
+    info "MediClaw package.json found in current directory — installing from source…"
     spin "Preparing OpenClaw package" bash -c "$(declare -f info warn pre_extract_openclaw); pre_extract_openclaw \"\$1\"" _ "$(pwd)" \
       || warn "Pre-extraction failed — npm install may fail if openclaw tarball is broken"
-    spin "Installing NemoClaw dependencies" npm install --ignore-scripts
-    spin "Building NemoClaw plugin" bash -c 'cd nemoclaw && npm install --ignore-scripts && npm run build'
-    spin "Linking NemoClaw CLI" npm link
+    spin "Installing MediClaw dependencies" npm install --ignore-scripts
+    spin "Building MediClaw plugin" bash -c 'cd nemoclaw && npm install --ignore-scripts && npm run build'
+    spin "Linking MediClaw CLI" npm link
   else
-    info "Installing NemoClaw from GitHub…"
+    info "Installing MediClaw from GitHub…"
     # Clone first so we can pre-extract openclaw before npm install (GH-503).
     # npm install -g git+https://... does this internally but we can't hook
     # into its extraction pipeline, so we do it ourselves.
     local nemoclaw_src="${HOME}/.nemoclaw/source"
     rm -rf "$nemoclaw_src"
     mkdir -p "$(dirname "$nemoclaw_src")"
-    spin "Cloning NemoClaw source" git clone --depth 1 https://github.com/NVIDIA/NemoClaw.git "$nemoclaw_src"
+    spin "Cloning MediClaw source" git clone --depth 1 https://github.com/vidulpanickan/NemoClaw.git "$nemoclaw_src"
     spin "Preparing OpenClaw package" bash -c "$(declare -f info warn pre_extract_openclaw); pre_extract_openclaw \"\$1\"" _ "$nemoclaw_src" \
       || warn "Pre-extraction failed — npm install may fail if openclaw tarball is broken"
-    spin "Installing NemoClaw dependencies" bash -c "cd \"$nemoclaw_src\" && npm install --ignore-scripts"
-    spin "Building NemoClaw plugin" bash -c "cd \"$nemoclaw_src\"/nemoclaw && npm install --ignore-scripts && npm run build"
-    spin "Linking NemoClaw CLI" bash -c "cd \"$nemoclaw_src\" && npm link"
+    spin "Installing MediClaw dependencies" bash -c "cd \"$nemoclaw_src\" && npm install --ignore-scripts"
+    spin "Building MediClaw plugin" bash -c "cd \"$nemoclaw_src\"/nemoclaw && npm install --ignore-scripts && npm run build"
+    spin "Linking MediClaw CLI" bash -c "cd \"$nemoclaw_src\" && npm link"
   fi
 
   refresh_path
@@ -503,7 +503,7 @@ verify_nemoclaw() {
     return 0
   else
     warn "Could not locate the nemoclaw executable."
-    warn "Try running:  npm install -g git+https://github.com/NVIDIA/NemoClaw.git"
+    warn "Try running:  npm install -g git+https://github.com/vidulpanickan/NemoClaw.git"
   fi
 
   error "Installation failed: nemoclaw binary not found."
@@ -594,7 +594,7 @@ main() {
   install_nodejs
   ensure_supported_runtime
 
-  step 2 "NemoClaw CLI"
+  step 2 "MediClaw CLI"
   # install_or_upgrade_ollama
   install_nemoclaw
   verify_nemoclaw

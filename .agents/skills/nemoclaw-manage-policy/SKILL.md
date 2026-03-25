@@ -9,9 +9,9 @@ Review and approve blocked agent network requests in the TUI.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
-- A running NemoClaw sandbox for dynamic changes, or the NemoClaw source repository for static changes.
+- A running MediClaw sandbox for dynamic changes, or the MediClaw source repository for static changes.
 
 Review and act on network requests that the agent makes to endpoints not listed in the sandbox policy.
 OpenShell intercepts these requests and presents them in the TUI for operator approval.
@@ -66,8 +66,8 @@ The walkthrough requires tmux and the `NVIDIA_API_KEY` environment variable.
 
 Add, remove, or modify the endpoints that the sandbox is allowed to reach.
 
-The sandbox policy is defined in a declarative YAML file in the NemoClaw repository and enforced at runtime by [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
-NemoClaw supports both static policy changes that persist across restarts and dynamic updates applied to a running sandbox through the OpenShell CLI.
+The sandbox policy is defined in a declarative YAML file in the MediClaw repository and enforced at runtime by [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell).
+MediClaw supports both static policy changes that persist across restarts and dynamic updates applied to a running sandbox through the OpenShell CLI.
 
 ## Step 5: Static Changes
 
@@ -133,7 +133,7 @@ To make changes permanent, update the static policy file and re-run setup.
 
 ## Step 7: Policy Presets
 
-NemoClaw ships preset policy files for common integrations in `nemoclaw-blueprint/policies/presets/`.
+MediClaw ships preset policy files for common integrations in `nemoclaw-blueprint/policies/presets/`.
 Apply a preset as-is or use it as a starting template for a custom policy.
 
 Available presets:

@@ -3,9 +3,9 @@ title:
   page: "Back Up and Restore Workspace Files"
   nav: "Back Up & Restore"
 description: "How to back up and restore OpenClaw workspace files before destructive operations."
-keywords: ["nemoclaw backup", "nemoclaw restore", "workspace backup", "openshell sandbox download upload"]
+keywords: ["mediclaw backup", "mediclaw restore", "workspace backup", "openshell sandbox download upload"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "sandboxing", "workspace", "backup", "nemoclaw"]
+tags: ["openclaw", "openshell", "sandboxing", "workspace", "backup", "mediclaw"]
 content:
   type: how_to
   difficulty: technical_beginner
@@ -27,14 +27,14 @@ This guide covers manual backup with CLI commands and an automated script.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox (for backup) or a freshly created sandbox (for restore).
+- A running MediClaw sandbox (for backup) or a freshly created sandbox (for restore).
 - The OpenShell CLI on your `PATH`.
 - The sandbox name (shown by `nemoclaw list`).
 
 ## When to Back Up
 
 - Before running `nemoclaw <name> destroy`.
-- Before major NemoClaw version upgrades.
+- Before major MediClaw version upgrades.
 - Periodically, if you have invested time customizing your agent.
 
 ## Manual Backup

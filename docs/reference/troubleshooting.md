@@ -1,11 +1,11 @@
 ---
 title:
-  page: "NemoClaw Troubleshooting Guide"
+  page: "MediClaw Troubleshooting Guide"
   nav: "Troubleshooting"
-description: "Diagnose and resolve common NemoClaw installation, onboarding, and runtime issues."
-keywords: ["nemoclaw troubleshooting", "nemoclaw debug sandbox issues"]
+description: "Diagnose and resolve common MediClaw installation, onboarding, and runtime issues."
+keywords: ["mediclaw troubleshooting", "mediclaw debug sandbox issues"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "troubleshooting", "nemoclaw"]
+tags: ["openclaw", "openshell", "troubleshooting", "mediclaw"]
 content:
   type: reference
   difficulty: technical_beginner
@@ -22,12 +22,12 @@ status: published
 
 # Troubleshooting
 
-This page covers common issues you may encounter when installing, onboarding, or running NemoClaw, along with their resolution steps.
+This page covers common issues you may encounter when installing, onboarding, or running MediClaw, along with their resolution steps.
 
 :::{admonition} Get Help
 :class: tip
 
-If your issue is not listed here, join the [NemoClaw Discord channel](https://discord.gg/XFpfPv9Uvx) to ask questions and get help from the community. You can also [file an issue on GitHub](https://github.com/NVIDIA/NemoClaw/issues/new).
+If your issue is not listed here, join the [MediClaw Discord channel](https://discord.gg/XFpfPv9Uvx) to ask questions and get help from the community. You can also [file an issue on GitHub](https://github.com/vidulpanickan/NemoClaw/issues/new).
 :::
 
 ## Installation
@@ -42,12 +42,12 @@ Run `source ~/.bashrc` (or `source ~/.zshrc` for zsh), or open a new terminal wi
 ### Installer fails on unsupported platform
 
 The installer checks for a supported OS and architecture before proceeding.
-NemoClaw requires Linux Ubuntu 22.04 LTS or later.
+MediClaw requires Linux Ubuntu 22.04 LTS or later.
 If you see an unsupported platform error, verify that you are running on a supported Linux distribution.
 
 ### Node.js version is too old
 
-NemoClaw requires Node.js 20 or later.
+MediClaw requires Node.js 20 or later.
 If the installer exits with a Node.js version error, check your current version:
 
 ```console
@@ -90,7 +90,7 @@ Add the `export` line to your `~/.bashrc` or `~/.zshrc` to make it permanent, th
 
 ### Port already in use
 
-The NemoClaw gateway uses port `18789` by default.
+The MediClaw gateway uses port `18789` by default.
 If another process is already bound to this port, onboarding fails.
 Identify the conflicting process, verify it is safe to stop, and terminate it:
 
@@ -134,7 +134,7 @@ The wizard cleans up stale port forwards and waits for gateway readiness automat
 ### Colima socket not detected (macOS)
 
 Newer Colima versions use the XDG base directory (`~/.config/colima/default/docker.sock`) instead of the legacy path (`~/.colima/default/docker.sock`).
-NemoClaw checks both paths.
+MediClaw checks both paths.
 If neither is found, verify that Colima is running:
 
 ```console

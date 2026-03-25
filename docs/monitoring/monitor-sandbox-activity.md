@@ -1,11 +1,11 @@
 ---
 title:
-  page: "Monitor NemoClaw Sandbox Activity and Debug Issues"
+  page: "Monitor MediClaw Sandbox Activity and Debug Issues"
   nav: "Monitor Sandbox Activity"
 description: "Inspect sandbox health, trace agent behavior, and diagnose problems."
-keywords: ["monitor nemoclaw sandbox", "debug nemoclaw agent issues"]
+keywords: ["monitor mediclaw sandbox", "debug mediclaw agent issues"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "monitoring", "troubleshooting", "nemoclaw"]
+tags: ["openclaw", "openshell", "monitoring", "troubleshooting", "mediclaw"]
 content:
   type: how_to
   difficulty: technical_beginner
@@ -20,11 +20,11 @@ status: published
 
 # Monitor Sandbox Activity and Debug Issues
 
-Use the NemoClaw status, logs, and TUI tools together to inspect sandbox health, trace agent behavior, and diagnose problems.
+Use the MediClaw status, logs, and TUI tools together to inspect sandbox health, trace agent behavior, and diagnose problems.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
 
 ## Check Sandbox Health

@@ -1,16 +1,16 @@
 # Overview
 
-> **Alpha software:** NemoClaw is in alpha, available as an early preview since March 16, 2026.
+> **Alpha software:** MediClaw is in alpha, available as an early preview since March 16, 2026.
 > APIs, configuration schemas, and runtime behavior are subject to breaking changes between releases.
 > Do not use this software in production environments.
 > File issues and feedback through the GitHub repository as the project continues to stabilize.
 
-NVIDIA NemoClaw is an open source reference stack that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants.
+NVIDIA MediClaw is an open source reference stack that simplifies running [OpenClaw](https://openclaw.ai) always-on assistants.
 It incorporates policy-based privacy and security guardrails, giving users control over their agents’ behavior and data handling.
 This enables self-evolving claws to run more safely in clouds, on prem, RTX PCs and DGX Spark.
 
-NemoClaw uses open source models, such as [NVIDIA Nemotron](https://build.nvidia.com), alongside the [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) runtime, part of the NVIDIA Agent Toolkit—a secure environment designed for executing claws more safely.
-By combining powerful open source models with built-in safety measures, NemoClaw simplifies and secures AI agent deployment.
+MediClaw uses open source models, such as [NVIDIA Nemotron](https://build.nvidia.com), alongside the [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) runtime, part of the NVIDIA Agent Toolkit—a secure environment designed for executing claws more safely.
+By combining powerful open source models with built-in safety measures, MediClaw simplifies and secures AI agent deployment.
 
 | Capability              | Description                                                                                                                                          |
 |-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -24,7 +24,7 @@ Autonomous AI agents like OpenClaw can make arbitrary network requests, access t
 
 ## Benefits
 
-NemoClaw provides the following benefits.
+MediClaw provides the following benefits.
 
 | Benefit                    | Description                                                                                                            |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------|
@@ -36,7 +36,7 @@ NemoClaw provides the following benefits.
 
 ## Use Cases
 
-You can use NemoClaw for various use cases including the following.
+You can use MediClaw for various use cases including the following.
 
 | Use Case                  | Description                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
@@ -46,10 +46,10 @@ You can use NemoClaw for various use cases including the following.
 
 ## Next Steps
 
-Explore the following pages to learn more about NemoClaw.
+Explore the following pages to learn more about MediClaw.
 
-- How It Works (see the `nemoclaw-overview` skill) to understand the key concepts behind NemoClaw.
-- Quickstart (see the `nemoclaw-get-started` skill) to install NemoClaw and run your first agent.
+- How It Works (see the `nemoclaw-overview` skill) to understand the key concepts behind MediClaw.
+- Quickstart (see the `nemoclaw-get-started` skill) to install MediClaw and run your first agent.
 - Switch Inference Providers (see the `nemoclaw-configure-inference` skill) to configure the inference provider.
 - Approve or Deny Network Requests (see the `nemoclaw-manage-policy` skill) to manage egress approvals.
 - Deploy to a Remote GPU Instance (see the `nemoclaw-deploy-remote` skill) for persistent operation.

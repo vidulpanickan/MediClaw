@@ -18,7 +18,7 @@ describe("uninstall CLI flags", () => {
 
     expect(result.status).toBe(0);
     const output = `${result.stdout}${result.stderr}`;
-    expect(output).toMatch(/NemoClaw Uninstaller/);
+    expect(output).toMatch(/MediClaw Uninstaller/);
     expect(output).toMatch(/--yes/);
     expect(output).toMatch(/--keep-openshell/);
     expect(output).toMatch(/--delete-models/);

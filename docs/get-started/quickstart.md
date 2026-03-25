@@ -1,11 +1,11 @@
 ---
 title:
-  page: "NemoClaw Quickstart — Install, Launch, and Run Your First Agent"
+  page: "MediClaw Quickstart — Install, Launch, and Run Your First Agent"
   nav: "Quickstart"
-description: "Install NemoClaw, launch a sandbox, and run your first agent prompt."
-keywords: ["nemoclaw quickstart", "install nemoclaw openclaw sandbox"]
+description: "Install MediClaw, launch a sandbox, and run your first agent prompt."
+keywords: ["mediclaw quickstart", "install mediclaw openclaw sandbox"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "sandboxing", "inference_routing", "nemoclaw"]
+tags: ["openclaw", "openshell", "sandboxing", "inference_routing", "mediclaw"]
 content:
   type: get_started
   difficulty: technical_beginner
@@ -23,10 +23,10 @@ status: published
 ```{include} ../_includes/alpha-statement.md
 ```
 
-Follow these steps to get started with NemoClaw and your first sandboxed OpenClaw agent.
+Follow these steps to get started with MediClaw and your first sandboxed OpenClaw agent.
 
 :::{note}
-NemoClaw currently requires a fresh installation of OpenClaw.
+MediClaw currently requires a fresh installation of OpenClaw.
 :::
 
 ```{include} ../../README.md

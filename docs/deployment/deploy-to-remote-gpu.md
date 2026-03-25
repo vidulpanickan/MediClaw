@@ -1,11 +1,11 @@
 ---
 title:
-  page: "Deploy NemoClaw to a Remote GPU Instance with Brev"
+  page: "Deploy MediClaw to a Remote GPU Instance with Brev"
   nav: "Deploy to Remote GPU"
-description: "Provision a remote GPU VM with NemoClaw using Brev deployment."
-keywords: ["deploy nemoclaw remote gpu", "nemoclaw brev cloud deployment"]
+description: "Provision a remote GPU VM with MediClaw using Brev deployment."
+keywords: ["deploy mediclaw remote gpu", "mediclaw brev cloud deployment"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "deployment", "gpu", "nemoclaw"]
+tags: ["openclaw", "openshell", "deployment", "gpu", "mediclaw"]
 content:
   type: how_to
   difficulty: intermediate
@@ -18,16 +18,16 @@ status: published
   SPDX-License-Identifier: Apache-2.0
 -->
 
-# Deploy NemoClaw to a Remote GPU Instance
+# Deploy MediClaw to a Remote GPU Instance
 
-Run NemoClaw on a remote GPU instance through [Brev](https://brev.nvidia.com).
+Run MediClaw on a remote GPU instance through [Brev](https://brev.nvidia.com).
 The deploy command provisions the VM, installs dependencies, and connects you to a running sandbox.
 
 ## Prerequisites
 
 - The [Brev CLI](https://brev.nvidia.com) installed and authenticated.
 - An NVIDIA API key from [build.nvidia.com](https://build.nvidia.com).
-- NemoClaw installed locally. Follow the [Quickstart](../get-started/quickstart.md) install steps.
+- MediClaw installed locally. Follow the [Quickstart](../get-started/quickstart.md) install steps.
 
 ## Deploy the Instance
 
@@ -35,7 +35,7 @@ The deploy command provisions the VM, installs dependencies, and connects you to
 The `nemoclaw deploy` command is experimental and may not work as expected.
 :::
 
-Create a Brev instance and run the NemoClaw setup:
+Create a Brev instance and run the MediClaw setup:
 
 ```console
 $ nemoclaw deploy <instance-name>

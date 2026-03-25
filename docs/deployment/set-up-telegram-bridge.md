@@ -1,11 +1,11 @@
 ---
 title:
-  page: "Set Up the NemoClaw Telegram Bridge for Remote Agent Chat"
+  page: "Set Up the MediClaw Telegram Bridge for Remote Agent Chat"
   nav: "Set Up Telegram Bridge"
 description: "Forward messages between Telegram and the sandboxed OpenClaw agent."
-keywords: ["nemoclaw telegram bridge", "telegram bot openclaw agent"]
+keywords: ["mediclaw telegram bridge", "telegram bot openclaw agent"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "telegram", "deployment", "nemoclaw"]
+tags: ["openclaw", "openshell", "telegram", "deployment", "mediclaw"]
 content:
   type: how_to
   difficulty: intermediate
@@ -25,7 +25,7 @@ The Telegram bridge is an auxiliary service managed by `nemoclaw start`.
 
 ## Prerequisites
 
-- A running NemoClaw sandbox, either local or remote.
+- A running MediClaw sandbox, either local or remote.
 - A Telegram bot token from [BotFather](https://t.me/BotFather).
 
 ## Create a Telegram Bot
@@ -90,5 +90,5 @@ $ nemoclaw stop
 
 ## Related Topics
 
-- [Deploy NemoClaw to a Remote GPU Instance](deploy-to-remote-gpu.md) for remote deployment with Telegram support.
+- [Deploy MediClaw to a Remote GPU Instance](deploy-to-remote-gpu.md) for remote deployment with Telegram support.
 - [Commands](../reference/commands.md) for the full `start` and `stop` command reference.

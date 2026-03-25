@@ -1,11 +1,11 @@
 ---
 title:
-  page: "Approve or Deny NemoClaw Agent Network Requests"
+  page: "Approve or Deny MediClaw Agent Network Requests"
   nav: "Approve Network Requests"
 description: "Review and approve blocked agent network requests in the TUI."
-keywords: ["nemoclaw approve network requests", "sandbox egress approval tui"]
+keywords: ["mediclaw approve network requests", "sandbox egress approval tui"]
 topics: ["generative_ai", "ai_agents"]
-tags: ["openclaw", "openshell", "network_policy", "security", "nemoclaw"]
+tags: ["openclaw", "openshell", "network_policy", "security", "mediclaw"]
 content:
   type: how_to
   difficulty: technical_beginner
@@ -25,7 +25,7 @@ OpenShell intercepts these requests and presents them in the TUI for operator ap
 
 ## Prerequisites
 
-- A running NemoClaw sandbox.
+- A running MediClaw sandbox.
 - The OpenShell CLI on your `PATH`.
 
 ## Open the TUI

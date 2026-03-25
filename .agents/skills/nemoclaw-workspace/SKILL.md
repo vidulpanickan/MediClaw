@@ -66,7 +66,7 @@ You can edit them in two ways:
 
 ## Prerequisites
 
-- A running NemoClaw sandbox (for backup) or a freshly created sandbox (for restore).
+- A running MediClaw sandbox (for backup) or a freshly created sandbox (for restore).
 - The OpenShell CLI on your `PATH`.
 - The sandbox name (shown by `nemoclaw list`).
 
@@ -78,7 +78,7 @@ This guide covers manual backup with CLI commands and an automated script.
 ## Step 1: When to Back Up
 
 - Before running `nemoclaw <name> destroy`.
-- Before major NemoClaw version upgrades.
+- Before major MediClaw version upgrades.
 - Periodically, if you have invested time customizing your agent.
 
 ## Step 2: Manual Backup

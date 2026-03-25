@@ -2,11 +2,11 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 #
-# NemoClaw uninstaller.
+# MediClaw uninstaller.
 # Removes the host-side resources created by the installer/setup flow:
-#   - NemoClaw helper services
-#   - All OpenShell sandboxes plus the NemoClaw gateway/providers
-#   - NemoClaw/OpenShell/OpenClaw Docker images built or pulled for the sandbox flow
+#   - MediClaw helper services
+#   - All OpenShell sandboxes plus the MediClaw gateway/providers
+#   - MediClaw/OpenShell/OpenClaw Docker images built or pulled for the sandbox flow
 #   - ~/.nemoclaw plus ~/.config/{openshell,nemoclaw} state
 #   - Global nemoclaw npm install/link
 #   - OpenShell binary if it was installed to the standard installer path
@@ -89,25 +89,25 @@ step() {
 
 print_banner() {
   printf "\n"
-  printf "  ${C_GREEN}${C_BOLD} ███╗   ██╗███████╗███╗   ███╗ ██████╗  ██████╗██╗      █████╗ ██╗    ██╗${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ████╗  ██║██╔════╝████╗ ████║██╔═══██╗██╔════╝██║     ██╔══██╗██║    ██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██╔██╗ ██║█████╗  ██╔████╔██║██║   ██║██║     ██║     ███████║██║ █╗ ██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██║╚██╗██║██╔══╝  ██║╚██╔╝██║██║   ██║██║     ██║     ██╔══██║██║███╗██║${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ██║ ╚████║███████╗██║ ╚═╝ ██║╚██████╔╝╚██████╗███████╗██║  ██║╚███╔███╔╝${C_RESET}\n"
-  printf "  ${C_GREEN}${C_BOLD} ╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ███╗   ███╗███████╗██████╗ ██╗ ██████╗██╗      █████╗ ██╗    ██╗${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ████╗ ████║██╔════╝██╔══██╗██║██╔════╝██║     ██╔══██╗██║    ██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██╔████╔██║█████╗  ██║  ██║██║██║     ██║     ███████║██║ █╗ ██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██║╚██╔╝██║██╔══╝  ██║  ██║██║██║     ██║     ██╔══██║██║███╗██║${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ██║ ╚═╝ ██║███████╗██████╔╝██║╚██████╗███████╗██║  ██║╚███╔███╔╝${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD} ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝${C_RESET}\n"
   printf "\n"
-  printf "  ${C_DIM}Uninstaller — This will remove all NemoClaw resources.${C_RESET}\n"
+  printf "  ${C_DIM}Uninstaller — This will remove all MediClaw resources.${C_RESET}\n"
   printf "  ${C_DIM}Docker, Node.js, Ollama, and npm are preserved.${C_RESET}\n"
   printf "\n"
 }
 
 print_bye() {
   printf "\n"
-  printf "  ${C_GREEN}${C_BOLD}NemoClaw${C_RESET}\n"
+  printf "  ${C_GREEN}${C_BOLD}MediClaw${C_RESET}\n"
   printf "\n"
   printf "  ${C_GREEN}${C_BOLD}Claws retracted.${C_RESET}  ${C_DIM}Until next time.${C_RESET}\n"
   printf "\n"
-  printf "  ${C_DIM}https://www.nvidia.com/nemoclaw${C_RESET}\n"
+  printf "  ${C_DIM}https://github.com/vidulpanickan/NemoClaw${C_RESET}\n"
   printf "\n"
 }
 
@@ -128,13 +128,13 @@ DELETE_MODELS=false
 
 usage() {
   printf "\n"
-  printf "  ${C_BOLD}NemoClaw Uninstaller${C_RESET}\n\n"
+  printf "  ${C_BOLD}MediClaw Uninstaller${C_RESET}\n\n"
   printf "  ${C_DIM}Usage:${C_RESET}\n"
   printf "    ./uninstall.sh [--yes] [--keep-openshell] [--delete-models]\n\n"
   printf "  ${C_GREEN}Options:${C_RESET}\n"
   printf "    --yes             Skip the confirmation prompt\n"
   printf "    --keep-openshell  Leave the openshell binary installed\n"
-  printf "    --delete-models   Remove NemoClaw-pulled Ollama models\n"
+  printf "    --delete-models   Remove MediClaw-pulled Ollama models\n"
   printf "    -h, --help        Show this help\n"
   printf "\n"
 }
@@ -170,7 +170,7 @@ confirm() {
 
   printf "\n"
   printf "  ${C_YELLOW}What will be removed:${C_RESET}\n"
-  printf "  ${C_DIM}  · All OpenShell sandboxes, gateway, and NemoClaw providers${C_RESET}\n"
+  printf "  ${C_DIM}  · All OpenShell sandboxes, gateway, and MediClaw providers${C_RESET}\n"
   printf "  ${C_DIM}  · Related Docker containers, images, and volumes${C_RESET}\n"
   printf "  ${C_DIM}  · ~/.nemoclaw  ~/.config/openshell  ~/.config/nemoclaw${C_RESET}\n"
   printf "  ${C_DIM}  · Global nemoclaw npm package${C_RESET}\n"
@@ -245,7 +245,7 @@ remove_file_with_optional_sudo() {
 
 stop_helper_services() {
   if [ -x "$SCRIPT_DIR/scripts/start-services.sh" ]; then
-    run_optional "Stopped NemoClaw helper services" "$SCRIPT_DIR/scripts/start-services.sh" --stop
+    run_optional "Stopped MediClaw helper services" "$SCRIPT_DIR/scripts/start-services.sh" --stop
   fi
 
   remove_glob_paths "${TMP_ROOT}/nemoclaw-services-*"
@@ -353,7 +353,7 @@ remove_related_docker_containers() {
   )
 
   if [ "${#container_ids[@]}" -eq 0 ]; then
-    info "No NemoClaw/OpenShell Docker containers found"
+    info "No MediClaw/OpenShell Docker containers found"
     return 0
   fi
 
@@ -404,7 +404,7 @@ remove_related_docker_images() {
   )
 
   if [ "${#image_ids[@]}" -eq 0 ]; then
-    info "No NemoClaw/OpenShell Docker images found"
+    info "No MediClaw/OpenShell Docker images found"
     return 0
   fi
 
@@ -449,7 +449,7 @@ remove_related_docker_volumes() {
   done < <(gateway_volume_candidates "$DEFAULT_GATEWAY")
 
   if [ "${#volume_names[@]}" -eq 0 ]; then
-    info "No NemoClaw/OpenShell Docker volumes found"
+    info "No MediClaw/OpenShell Docker volumes found"
     return 0
   fi
 
@@ -466,7 +466,7 @@ remove_related_docker_volumes() {
   done
 
   if [ "$removed_any" = false ]; then
-    info "No NemoClaw/OpenShell Docker volumes found"
+    info "No MediClaw/OpenShell Docker volumes found"
   fi
 }
 
@@ -533,8 +533,8 @@ main() {
   step 2 "OpenShell resources"
   remove_openshell_resources
 
-  step 3 "NemoClaw CLI"
-  spin "Removing NemoClaw CLI..." remove_nemoclaw_cli
+  step 3 "MediClaw CLI"
+  spin "Removing MediClaw CLI..." remove_nemoclaw_cli
 
   step 4 "Docker resources"
   spin "Removing Docker resources..." remove_docker_resources

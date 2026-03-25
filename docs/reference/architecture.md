@@ -1,9 +1,9 @@
 ---
 title:
-  page: "NemoClaw Architecture — Plugin, Blueprint, and Sandbox Structure"
+  page: "MediClaw Architecture — Plugin, Blueprint, and Sandbox Structure"
   nav: "Architecture"
-description: "Learn how NemoClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox."
-keywords: ["nemoclaw architecture", "nemoclaw plugin blueprint structure"]
+description: "Learn how MediClaw combines a lightweight CLI plugin with a versioned blueprint to move OpenClaw into a controlled sandbox."
+keywords: ["mediclaw architecture", "mediclaw plugin blueprint structure"]
 topics: ["generative_ai", "ai_agents"]
 tags: ["openclaw", "openshell", "sandboxing", "blueprints", "inference_routing"]
 content:
@@ -20,9 +20,9 @@ status: published
 
 # Architecture
 
-NemoClaw has two main components: a TypeScript plugin that integrates with the OpenClaw CLI, and a Python blueprint that orchestrates OpenShell resources.
+MediClaw has two main components: a TypeScript plugin that integrates with the OpenClaw CLI, and a Python blueprint that orchestrates OpenShell resources.
 
-## NemoClaw Plugin
+## MediClaw Plugin
 
 The plugin is a thin TypeScript package that registers an inference provider and the `/nemoclaw` slash command.
 It runs in-process with the OpenClaw gateway inside the sandbox.
@@ -48,7 +48,7 @@ nemoclaw/
 └── package.json                    Commands declared under openclaw.extensions
 ```
 
-## NemoClaw Blueprint
+## MediClaw Blueprint
 
 The blueprint is a versioned Python artifact with its own release stream.
 The plugin resolves, verifies, and executes the blueprint as a subprocess.
@@ -93,7 +93,7 @@ The sandbox runs the
 [`ghcr.io/nvidia/openshell-community/sandboxes/openclaw`](https://github.com/NVIDIA/OpenShell-Community)
 container image. Inside the sandbox:
 
-- OpenClaw runs with the NemoClaw plugin pre-installed.
+- OpenClaw runs with the MediClaw plugin pre-installed.
 - Inference calls are routed through OpenShell to the configured provider.
 - Network egress is restricted by the baseline policy in `openclaw-sandbox.yaml`.
 - Filesystem access is confined to `/sandbox` and `/tmp` for read-write access, with system paths read-only.

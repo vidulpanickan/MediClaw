@@ -1,24 +1,24 @@
 ---
 name: nemoclaw-get-started
-description: Installs NemoClaw, launch a sandbox, and run your first agent prompt. Use when inference routing, install nemoclaw openclaw sandbox, nemoclaw, nemoclaw quickstart, nemoclaw quickstart install launch, openclaw, openshell, sandboxing.
+description: Installs MediClaw, launch a sandbox, and run your first agent prompt. Use when inference routing, install nemoclaw openclaw sandbox, nemoclaw, nemoclaw quickstart, nemoclaw quickstart install launch, openclaw, openshell, sandboxing.
 ---
 
 # Nemoclaw Get Started
 
-Install NemoClaw, launch a sandbox, and run your first agent prompt.
+Install MediClaw, launch a sandbox, and run your first agent prompt.
 
-> **Alpha software:** NemoClaw is in alpha, available as an early preview since March 16, 2026.
+> **Alpha software:** MediClaw is in alpha, available as an early preview since March 16, 2026.
 > APIs, configuration schemas, and runtime behavior are subject to breaking changes between releases.
 > Do not use this software in production environments.
 > File issues and feedback through the GitHub repository as the project continues to stabilize.
 
-Follow these steps to get started with NemoClaw and your first sandboxed OpenClaw agent.
+Follow these steps to get started with MediClaw and your first sandboxed OpenClaw agent.
 
-> **Note:** NemoClaw currently requires a fresh installation of OpenClaw.
+> **Note:** MediClaw currently requires a fresh installation of OpenClaw.
 
 ## Prerequisites
 
-Check the prerequisites before you start to ensure you have the necessary software and hardware to run NemoClaw.
+Check the prerequisites before you start to ensure you have the necessary software and hardware to run MediClaw.
 
 ### Hardware
 
@@ -46,14 +46,14 @@ The sandbox image is approximately 2.4 GB compressed. During image push, the Doc
 |----------|--------------------|-------|
 | Linux | Docker | Primary supported path today |
 | macOS (Apple Silicon) | Colima, Docker Desktop | Recommended runtimes for supported macOS setups |
-| macOS | Podman | Not supported yet. NemoClaw currently depends on OpenShell support for Podman on macOS. |
+| macOS | Podman | Not supported yet. MediClaw currently depends on OpenShell support for Podman on macOS. |
 | Windows WSL | Docker Desktop (WSL backend) | Supported target path |
 
 > **💡 Tip**
 >
-> For DGX Spark, follow the [DGX Spark setup guide](https://github.com/NVIDIA/NemoClaw/blob/main/spark-install.md). It covers Spark-specific prerequisites, such as cgroup v2 and Docker configuration, before running the standard installer.
+> For DGX Spark, follow the [DGX Spark setup guide](https://github.com/vidulpanickan/NemoClaw/blob/main/spark-install.md). It covers Spark-specific prerequisites, such as cgroup v2 and Docker configuration, before running the standard installer.
 
-### Install NemoClaw and Onboard OpenClaw Agent
+### Install MediClaw and Onboard OpenClaw Agent
 
 Download and run the installer script.
 The script installs Node.js if it is not already present, then runs the guided onboard wizard to create a sandbox, configure inference, and apply security policies.
@@ -120,24 +120,24 @@ This prints the complete response directly in the terminal and avoids relying on
 
 ### Uninstall
 
-To remove NemoClaw and all resources created during setup, in the terminal outside the sandbox, run:
+To remove MediClaw and all resources created during setup, in the terminal outside the sandbox, run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash
 ```
 
-The script removes sandboxes, the NemoClaw gateway and providers, related Docker images and containers, local state directories, and the global `nemoclaw` npm package. It does not remove shared system tooling such as Docker, Node.js, npm, or Ollama.
+The script removes sandboxes, the MediClaw gateway and providers, related Docker images and containers, local state directories, and the global `nemoclaw` npm package. It does not remove shared system tooling such as Docker, Node.js, npm, or Ollama.
 
 | Flag               | Effect                                              |
 |--------------------|-----------------------------------------------------|
 | `--yes`            | Skip the confirmation prompt.                       |
 | `--keep-openshell` | Leave the `openshell` binary installed.              |
-| `--delete-models`  | Also remove NemoClaw-pulled Ollama models.           |
+| `--delete-models`  | Also remove MediClaw-pulled Ollama models.           |
 
 For example, to skip the confirmation prompt:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/refs/heads/main/uninstall.sh | bash -s -- --yes
+curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/refs/heads/main/uninstall.sh | bash -s -- --yes
 ```
 
 ## Related Skills

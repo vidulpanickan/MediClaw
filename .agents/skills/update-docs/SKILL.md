@@ -9,7 +9,7 @@ Scan recent git history for commits that affect user-facing behavior and draft d
 
 ## Prerequisites
 
-- You must be in the NemoClaw git repository (`NemoClaw`).
+- You must be in the MediClaw git repository (`MediClaw`).
 - The `docs/` directory must exist with the current doc set.
 
 ## When to Use
@@ -94,7 +94,7 @@ Write the doc update following these conventions:
 - **Include the SPDX header** if creating a new page.
 - **Match existing frontmatter format** if creating a new page.
 - **Always write NVIDIA in all caps.** Wrong: Nvidia, nvidia.
-- **Always capitalize NemoClaw correctly.** Wrong: nemoclaw (in prose), Nemoclaw.
+- **Always capitalize MediClaw correctly.** Wrong: nemoclaw (in prose), Nemoclaw.
 - **Always capitalize OpenShell correctly.** Wrong: openshell (in prose), Openshell, openShell.
 - **Do not number section titles.** Wrong: "Section 1: Configure Inference" or "Step 3: Verify." Use plain descriptive titles.
 - **No colons in titles.** Wrong: "Inference: Cloud and Local." Write "Cloud and Local Inference" instead.

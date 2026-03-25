@@ -6,7 +6,7 @@
 #
 # Proves the COMPLETE user journey including real inference against
 # NVIDIA Endpoints. Runs install.sh --non-interactive which handles
-# Node.js, openshell, NemoClaw, and onboard setup automatically.
+# Node.js, openshell, MediClaw, and onboard setup automatically.
 #
 # Prerequisites:
 #   - Docker running
@@ -22,7 +22,7 @@
 # Usage:
 #   NEMOCLAW_NON_INTERACTIVE=1 NVIDIA_API_KEY=nvapi-... bash test/e2e/test-full-e2e.sh
 #
-# See: https://github.com/NVIDIA/NemoClaw/issues/71
+# See: https://github.com/vidulpanickan/NemoClaw/issues/71
 
 set -uo pipefail
 
@@ -136,7 +136,7 @@ cd "$REPO" || {
 }
 
 info "Running install.sh --non-interactive..."
-info "This installs Node.js, openshell, NemoClaw, and runs onboard."
+info "This installs Node.js, openshell, MediClaw, and runs onboard."
 info "Expected duration: 5-10 minutes on first run."
 
 INSTALL_LOG="/tmp/nemoclaw-e2e-install.log"
@@ -314,14 +314,14 @@ else
 fi
 
 # ══════════════════════════════════════════════════════════════════
-# Phase 5: NemoClaw CLI operations
+# Phase 5: MediClaw CLI operations
 # ══════════════════════════════════════════════════════════════════
-section "Phase 5: NemoClaw CLI operations"
+section "Phase 5: MediClaw CLI operations"
 
 # Note: Policy enforcement (proxy blocking, L4/L7 rules, SSRF protection)
 # and sandbox command execution are tested extensively in OpenShell's own
 # E2E suite (e2e/python/test_sandbox_policy.py, test_sandbox_api.py).
-# NemoClaw tests only that its onboard correctly *configured* the policies
+# MediClaw tests only that its onboard correctly *configured* the policies
 # (Phase 3d above), not that OpenShell *enforces* them.
 
 # ── Test 5a: nemoclaw logs ──

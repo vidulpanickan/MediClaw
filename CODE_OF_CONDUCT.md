@@ -2,7 +2,7 @@
 
 ## Overview
 
-Define the code of conduct followed and enforced for NemoClaw
+Define the code of conduct followed and enforced for MediClaw
 
 ### Intended audience
 

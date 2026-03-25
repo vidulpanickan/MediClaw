@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent / "_ext"))
 
-project = "NVIDIA NemoClaw Developer Guide"
+project = "MediClaw Developer Guide"
 this_year = date.today().year
 copyright = f"2025-{this_year}, NVIDIA Corporation"
 author = "NVIDIA Corporation"
@@ -97,13 +97,13 @@ html_theme_options = {
     # "public_docs_features": True, # TODO: Uncomment this when the docs are public
     "icon_links": [
         {
-            "name": "NemoClaw GitHub",
-            "url": "https://github.com/NVIDIA/NemoClaw",
+            "name": "MediClaw GitHub",
+            "url": "https://github.com/vidulpanickan/NemoClaw",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
         },
         {
-            "name": "NemoClaw Discord",
+            "name": "MediClaw Discord",
             "url": "https://discord.gg/XFpfPv9Uvx",
             "icon": "fa-brands fa-discord",
             "type": "fontawesome",

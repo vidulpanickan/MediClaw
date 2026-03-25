@@ -13,7 +13,7 @@ profiles:
   - vllm
 
 description: |
-  NemoClaw blueprint: orchestrates OpenClaw sandbox creation, migration,
+  MediClaw blueprint: orchestrates OpenClaw sandbox creation, migration,
   and NIM/vLLM inference routing inside OpenShell.
 
 components:

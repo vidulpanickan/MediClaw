@@ -1,6 +1,6 @@
-# Contributing to NemoClaw Documentation
+# Contributing to MediClaw Documentation
 
-This guide covers how to write, edit, and review documentation for NemoClaw. If you change code that affects user-facing behavior, update the relevant docs in the same PR.
+This guide covers how to write, edit, and review documentation for MediClaw. If you change code that affects user-facing behavior, update the relevant docs in the same PR.
 
 ## Use the Agent Skills
 

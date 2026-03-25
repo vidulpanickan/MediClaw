@@ -1,6 +1,6 @@
 # Commands
 
-The `nemoclaw` CLI is the primary interface for managing NemoClaw sandboxes. It is installed when you run `npm install -g nemoclaw`.
+The `nemoclaw` CLI is the primary interface for managing MediClaw sandboxes. It is installed when you run `npm install -g nemoclaw`.
 
 ## `/nemoclaw` Slash Command
 
@@ -47,7 +47,7 @@ $ nemoclaw list
 
 > **Warning:** The `nemoclaw deploy` command is experimental and may not work as expected.
 
-Deploy NemoClaw to a remote GPU instance through [Brev](https://brev.nvidia.com).
+Deploy MediClaw to a remote GPU instance through [Brev](https://brev.nvidia.com).
 The deploy script installs Docker, NVIDIA Container Toolkit if a GPU is present, and OpenShell on the VM, then runs the nemoclaw setup and connects to the sandbox.
 
 ```console
@@ -148,7 +148,7 @@ $ nemoclaw status
 
 ### `nemoclaw setup-spark`
 
-Set up NemoClaw on DGX Spark.
+Set up MediClaw on DGX Spark.
 This command applies cgroup v2 and Docker fixes required for Ubuntu 24.04.
 Run with `sudo` on the Spark host.
 After the fixes complete, the script prompts you to run `nemoclaw onboard` to continue setup.

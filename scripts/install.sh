@@ -2,10 +2,10 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 #
-# NemoClaw curl-pipe-bash installer.
+# MediClaw curl-pipe-bash installer.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/NVIDIA/NemoClaw/main/scripts/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/vidulpanickan/NemoClaw/main/scripts/install.sh | bash
 
 set -euo pipefail
 
@@ -129,7 +129,7 @@ refresh_path() {
 MIN_NODE_MAJOR=20
 MIN_NPM_MAJOR=10
 RECOMMENDED_NODE_MAJOR=22
-RUNTIME_REQUIREMENT_MSG="NemoClaw requires Node.js >=${MIN_NODE_MAJOR} and npm >=${MIN_NPM_MAJOR} (recommended Node.js ${RECOMMENDED_NODE_MAJOR})."
+RUNTIME_REQUIREMENT_MSG="MediClaw requires Node.js >=${MIN_NODE_MAJOR} and npm >=${MIN_NPM_MAJOR} (recommended Node.js ${RECOMMENDED_NODE_MAJOR})."
 
 OS="$(uname -s)"
 ARCH="$(uname -m)"
@@ -407,7 +407,7 @@ pre_extract_openclaw() {
   rm -rf "$tmpdir"
 }
 
-# ── Install NemoClaw CLI ─────────────────────────────────────────
+# ── Install MediClaw CLI ─────────────────────────────────────────
 
 info "Installing nemoclaw CLI..."
 # Clone first so we can pre-extract openclaw before npm install (GH-503).
@@ -416,7 +416,7 @@ info "Installing nemoclaw CLI..."
 NEMOCLAW_SRC="${HOME}/.nemoclaw/source"
 rm -rf "$NEMOCLAW_SRC"
 mkdir -p "$(dirname "$NEMOCLAW_SRC")"
-git clone --depth 1 https://github.com/NVIDIA/NemoClaw.git "$NEMOCLAW_SRC"
+git clone --depth 1 https://github.com/vidulpanickan/NemoClaw.git "$NEMOCLAW_SRC"
 pre_extract_openclaw "$NEMOCLAW_SRC" || warn "Pre-extraction failed — npm install may fail if openclaw tarball is broken"
 # Use sudo for npm link when the global prefix requires it (e.g., nodesource),
 # but skip sudo if already root (e.g., Docker containers).
